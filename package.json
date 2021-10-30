@@ -1,0 +1,31 @@
+{
+  "name": "grabaphone",
+  "version": "0.0.0",
+  "description": "Grabaphone is a REST API that allows developers to get information on over 5000+ cellular devices",
+    "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+      "dev": "nodemon server.js",
+      "test": "jest -i --passWithNoTests"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "config.js",
+      "common.js"
+    ]
+  },
+  "keywords": [],
+    "author": "Leshawn Rice",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^5.0.1",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "jsonwebtoken": "^8.5.1",
+      "morgan": "^1.10.0",
+      "pg": "^8.7.1",
+      "jest": "^27.2.2"
+  }
+}
