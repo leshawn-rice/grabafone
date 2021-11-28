@@ -2,3 +2,4 @@
 *.env
 *secrets*
 *secret*
+*package-lock.json*
