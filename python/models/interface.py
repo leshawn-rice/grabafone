@@ -1,7 +1,7 @@
 import os
-from grabaphone import GrabaphoneAPI
-from phonearena import PhonearenaAPI
-from logger import Logger
+from models.grabaphone import GrabaphoneAPI
+from models.phonearena import PhonearenaAPI
+from models.logger import Logger
 
 
 class Interface(object):
@@ -9,7 +9,7 @@ class Interface(object):
         self.log = Logger(
             filename="seed.log",
             logName="Interface",
-            logLeve="DEBUG"
+            logLevel="DEBUG"
         )
         self.read_env()
         self.grabaphone = GrabaphoneAPI(
@@ -38,3 +38,12 @@ class Interface(object):
             if not PG_USERNAME or not PG_PASSWORD or not DB_NAME:
                 self.log.error(".env inaccessible and env vars missing")
                 raise Exception(".env inaccessible and env vars missing")
+
+    def get_manufacturers(self):
+        resp = self.phonearena.get(endpoint="/phones/manufacturers")
+        divs = self.phonearena.find_elements_by_class(resp, "listing-item")
+        manufacturers = []
+        for div in divs:
+            link = div.find("a", class_="listing-item-hover").get("href")
+            name = div.find("span", class_="listing-item-hover-alt").string
+            manufacturers.append({"name": name, "link": link})

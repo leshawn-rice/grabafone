@@ -11,13 +11,14 @@ class PhonearenaAPI(object):
     def get(self, endpoint: str = "phones"):
         url = self.BASE_URL + endpoint
         response = self.session.get(url)
-        return response.text
+        response_html = response.text
+        return bsoup(response_html, 'html.parser')
 
-    def find_elements_by_tag(self, element_tag) -> list:
+    def find_elements_by_tag(self, html, element_tag) -> list:
         pass
 
-    def find_elements_by_class(self, element_class) -> list:
-        pass
+    def find_elements_by_class(self, html, element_class) -> list:
+        return html.find_all(class_=element_class)
 
-    def find_element_by_id(self, element_id):
+    def find_element_by_id(self, html, element_id):
         pass

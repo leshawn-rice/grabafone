@@ -1,10 +1,11 @@
-from engine import Engine
+from models.engine import Engine
 
 
 class GrabaphoneAPI(object):
     def __init__(self, PG_USERNAME: str = None, PG_PASSWORD: str = None, DB_NAME: str = None):
         connection_string = f"postgresql://{PG_USERNAME}:{PG_PASSWORD}@localhost:5432/{DB_NAME}"
         self.engine = Engine(connection_string=connection_string)
+        self.engine.create_session()
 
     def get_devices(self):
         pass
