@@ -16,8 +16,7 @@ CREATE TABLE keys (
 
 CREATE TABLE manufacturers (
   id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
-  description TEXT
+  name TEXT NOT NULL
 );
 
 CREATE TABLE devices (

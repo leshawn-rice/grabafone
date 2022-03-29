@@ -2,13 +2,13 @@ from models.engine import Engine
 
 
 class GrabaphoneAPI(object):
-    def __init__(self, PG_USERNAME: str = None, PG_PASSWORD: str = None, DB_NAME: str = None):
-        connection_string = f"postgresql://{PG_USERNAME}:{PG_PASSWORD}@localhost:5432/{DB_NAME}"
+    def __init__(self, DB_URI):
+        connection_string = DB_URI
         self.engine = Engine(connection_string=connection_string)
-        self.engine.create_session()
+        self.engine.start_session()
 
     def get_devices(self):
-        pass
+        return self.engine.get_all(table_name="devices")
 
     def get_device_by_id(self, device_id):
         pass
@@ -23,10 +23,18 @@ class GrabaphoneAPI(object):
         pass
 
     def get_manufacturers(self):
-        pass
+        return self.engine.get_all(table_name="manufacturers")
 
     def get_manufacturer_by_id(self, manufacturer_id):
         pass
 
     def get_manufacturer_by_name(self, manufacturer_name):
         pass
+
+    def add_manufacturers(self, manufacturers):
+        for manufacturer in manufacturers:
+            row_vals = {"name": manufacturer.name}
+            try:
+                self.engine.insert(table_name="manufacturers", values=row_vals)
+            except Exception as exc:
+                raise exc

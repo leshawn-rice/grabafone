@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from models.grabaphone import GrabaphoneAPI
 from models.phonearena import PhonearenaAPI
 from models.logger import Logger
@@ -11,39 +12,47 @@ class Interface(object):
             logName="Interface",
             logLevel="DEBUG"
         )
-        self.read_env()
-        self.grabaphone = GrabaphoneAPI(
-            self.PG_USERNAME,
-            self.PG_PASSWORD,
-            self.DB_NAME
-        )
+        self.get_db_uri()
+        self.grabaphone = GrabaphoneAPI(DB_URI=self.DB_URI)
         self.phonearena = PhonearenaAPI()
 
-    def read_env(self):
-        PG_USERNAME = os.environ.get("PG_USERNAME")
-        PG_PASSWORD = os.environ.get("PG_PASSWORD")
-        DB_NAME = os.environ.get("DB_NAME")
-        try:
-            dotenv = open(".env", "r")
-            env_vars = {
-                key: value for [key, value] in [
-                    line.strip().split("=") for line in dotenv.readlines()
-                ]
-            }
-            self.PG_USERNAME = PG_USERNAME or env_vars.get("PG_USERNAME")
-            self.PG_PASSWORD = PG_PASSWORD or env_vars.get("PG_PASSWORD")
-            self.DB_NAME = DB_NAME or env_vars.get("DB_NAME")
-
-        except:
-            if not PG_USERNAME or not PG_PASSWORD or not DB_NAME:
-                self.log.error(".env inaccessible and env vars missing")
-                raise Exception(".env inaccessible and env vars missing")
+    def get_db_uri(self):
+        load_dotenv()
+        self.DB_URI = os.environ.get("DB_URI", None)
+        if not self.DB_URI:
+            message = "DB_URI Missing!"
+            self.log.error(message)
+            raise Exception(message)
 
     def get_manufacturers(self):
-        resp = self.phonearena.get(endpoint="/phones/manufacturers")
-        divs = self.phonearena.find_elements_by_class(resp, "listing-item")
-        manufacturers = []
-        for div in divs:
-            link = div.find("a", class_="listing-item-hover").get("href")
-            name = div.find("span", class_="listing-item-hover-alt").string
-            manufacturers.append({"name": name, "link": link})
+        self.log.debug("Getting Manufacturers from PhoneArena...")
+        try:
+            manufacturers = self.phonearena.get_manufacturers()
+        except Exception as exc:
+            self.log.error("Error thrown by phonarena.get_manufacturers!")
+            self.log.error(exc)
+        self.log.debug("Manufacturers Acquired: {}".format(manufacturers))
+        self.log.debug("Adding manufacturers to DB...")
+        try:
+            self.grabaphone.add_manufacturers(manufacturers=manufacturers)
+        except Exception as exc:
+            self.log.error("Error thrown by grabaphone.add_manufacturers!")
+            self.log.error(exc)
+        self.log.debug("Manufacturers Added to DB successfully!")
+        return manufacturers
+
+    def get_devices_by_manufacturer(self, manufacturer):
+        self.log.debug("Getting Devices for {}".format(manufacturer))
+        try:
+            devices = self.phonearena.get_devices(manufacturer=manufacturer)
+        except Exception as exc:
+            self.log.error("Error thrown by phonarena.get_devices!")
+            self.log.error(exc)
+        self.log.debug(f"Got {manufacturer.name} Devices!: {devices}")
+
+    def get_devices(self, manufacturers):
+        for manufacturer in manufacturers:
+            self.get_devices_by_manufacturer(manufacturer=manufacturer)
+
+    def view_manufacturers(self):
+        return self.grabaphone.get_manufacturers()
