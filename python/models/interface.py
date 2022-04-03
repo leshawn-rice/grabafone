@@ -42,13 +42,21 @@ class Interface(object):
         return manufacturers
 
     def get_devices_by_manufacturer(self, manufacturer):
-        self.log.debug("Getting Devices for {}".format(manufacturer))
+        self.log.debug("Getting devices for {}".format(manufacturer))
+        devices = None
         try:
             devices = self.phonearena.get_devices(manufacturer=manufacturer)
         except Exception as exc:
             self.log.error("Error thrown by phonarena.get_devices!")
             self.log.error(exc)
-        self.log.debug(f"Got {manufacturer.name} Devices!: {devices}")
+        self.log.debug(f"Got {manufacturer.name} devices!: {devices}")
+        try:
+            self.grabaphone.add_devices(devices)
+        except Exception as exc:
+            self.log.error("Error thrown by grabaphone.add_devices!")
+            self.log.error(exc)
+        self.log.debug("{} Added to DB successfully!".format(devices))
+        return devices
 
     def get_devices(self, manufacturers):
         for manufacturer in manufacturers:
@@ -56,3 +64,6 @@ class Interface(object):
 
     def view_manufacturers(self):
         return self.grabaphone.get_manufacturers()
+
+    def view_devices(self):
+        return self.grabaphone.get_devices()
