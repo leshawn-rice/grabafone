@@ -24,3 +24,11 @@ CREATE TABLE devices (
   manufacturer_id INT REFERENCES manufacturers,
   name TEXT NOT NULL
 );
+
+CREATE TABLE specifications (
+  id SERIAL PRIMARY KEY,
+  device_id INT REFERENCES devices,
+  category TEXT,
+  key TEXT,
+  value TEXT
+);
