@@ -61,9 +61,7 @@ class Engine(object):
             row_id = row.id
             self.update(table_name=table_name, row_id=row_id, values=values)
         else:
-            self.session.execute(
-                insert(table).values(**values)
-            )
+            self.session.execute(insert(table).values(**values))
         self.session.commit()
 
     def get_all(self, table_name: str = None):
