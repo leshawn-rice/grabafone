@@ -50,7 +50,7 @@ class PhonearenaAPI(object):
         devices = set()
         # O(1)
         for page in range(self.MAX_PAGES):
-            endpoint = f"/phones/manufacturers/{manufacturer.name}/page/{page+1}"
+            endpoint = f"/phones/manufacturers/{manufacturer.name.lower()}/page/{page+1}"
             page_html = self.get(endpoint=endpoint)
             device_cards = self.find_elements_by_class(
                 page_html, "widget-tilePhoneCard")
