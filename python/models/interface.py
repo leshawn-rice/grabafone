@@ -7,11 +7,7 @@ from models.logger import Logger
 
 class Interface(object):
     def __init__(self):
-        self.log = Logger(
-            filename="seed.log",
-            logName="Interface",
-            logLevel="DEBUG"
-        )
+        self.log = Logger(filename="seed.log", logName="Interface", logLevel="DEBUG")
         self.get_db_uri()
         self.grabaphone = GrabaphoneAPI(DB_URI=self.DB_URI)
         self.phonearena = PhonearenaAPI()

@@ -30,7 +30,10 @@ class GrabaphoneAPI(object):
 
     def get_manufacturer_by_name(self, manufacturer_name):
         manufacturer = self.engine.get_by_column_value(
-            table_name="manufacturers", column_name="name", column_value=manufacturer_name)
+            table_name="manufacturers",
+            column_name="name",
+            column_value=manufacturer_name,
+        )
         try:
             return manufacturer.pop()
         except IndexError:
@@ -46,26 +49,21 @@ class GrabaphoneAPI(object):
 
     def add_devices(self, devices):
         for device in devices:
-            manufacturer = self.get_manufacturer_by_name(
-                device.manufacturer.name)
+            manufacturer = self.get_manufacturer_by_name(device.manufacturer.name)
             if not manufacturer:
                 print("No Manufacturer!")
                 raise ValueError("No Manufacturer!")
 
-            row_vals = {"name": device.name,
-                        "manufacturer_id": manufacturer.id}
+            row_vals = {"name": device.name, "manufacturer_id": manufacturer.id}
             try:
-                self.engine.insert(
-                    table_name="devices", values=row_vals)
+                self.engine.insert(table_name="devices", values=row_vals)
             except Exception as exc:
                 raise exc
 
             device_object = None
 
             device_rows = self.engine.get_by_column_value(
-                table_name="devices",
-                column_name="name",
-                column_value=device.name
+                table_name="devices", column_name="name", column_value=device.name
             )
 
             if len(device_rows) > 1:
@@ -81,10 +79,13 @@ class GrabaphoneAPI(object):
             device_id = device_object.id
             for category, spec_dict in device.specs.items():
                 for key, value in spec_dict.items():
-                    row_vals = {"device_id": device_id,
-                                "category": category, "key": key, "value": value}
+                    row_vals = {
+                        "device_id": device_id,
+                        "category": category,
+                        "key": key,
+                        "value": value,
+                    }
                     try:
-                        self.engine.insert(
-                            table_name="specifications", values=row_vals)
+                        self.engine.insert(table_name="specifications", values=row_vals)
                     except Exception as exc:
                         raise exc

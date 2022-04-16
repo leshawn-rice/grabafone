@@ -7,7 +7,7 @@ class Logger(object):
             filename=filename,
             filemode="a+",
             format="%(levelname)s %(asctime)s - %(message)s",
-            level=logging.DEBUG
+            level=logging.DEBUG,
         )
         self.log = logging.getLogger(logName)
 

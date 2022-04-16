@@ -6,11 +6,15 @@ CREATE DATABASE grabaphone;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email TEXT NOT NULL,
+  username TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  confirmed BOOLEAN DEFAULT false,
   password TEXT NOT NULL
 );
 
 CREATE TABLE keys (
   id SERIAL PRIMARY KEY,
+  api_key TEXT NOT NULL,
   user_id INT REFERENCES users
 );
 

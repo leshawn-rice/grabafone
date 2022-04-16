@@ -6,10 +6,7 @@ from sqlalchemy import create_engine, insert, select, update
 class Engine(object):
     def __init__(self, connection_string: str = "postgresql:///postgres"):
         self.base = automap_base()
-        self.engine = create_engine(
-            connection_string,
-            convert_unicode=True
-        )
+        self.engine = create_engine(connection_string, convert_unicode=True)
         self.base.prepare(self.engine, reflect=True)
         self.tables = self.base.classes
         self.session = None
@@ -48,9 +45,7 @@ class Engine(object):
         if not row_id or not isinstance(row_id, int):
             raise ValueError("Invalid Row ID!")
         table = self.get_table(name=table_name)
-        self.session.execute(
-            update(table).where(table.id == row_id).values(**values)
-        )
+        self.session.execute(update(table).where(table.id == row_id).values(**values))
 
     def insert(self, table_name: str = None, values: dict = None):
         if not values or not isinstance(values, dict):

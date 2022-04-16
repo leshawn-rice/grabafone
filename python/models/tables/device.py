@@ -2,7 +2,9 @@ from models.tables.table import Table
 
 
 class Device(Table):
-    def __init__(self, name: str = None, link: str = None, manufacturer=None, specs: dict = None):
+    def __init__(
+        self, name: str = None, link: str = None, manufacturer=None, specs: dict = None
+    ):
         self.name = name
         self.link = link
         self.manufacturer = manufacturer

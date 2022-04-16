@@ -16,7 +16,7 @@ class PhonearenaAPI(object):
         url = self.BASE_URL + endpoint
         response = self.session.get(url)
         response_html = response.text
-        return bsoup(response_html, 'html.parser')
+        return bsoup(response_html, "html.parser")
 
     def find_elements_by_tag(self, html, tag_name) -> list:
         return html.find_all(tag_name)
@@ -29,17 +29,16 @@ class PhonearenaAPI(object):
 
     def parse_manufacturers(self):
         resp = self.get(endpoint="/phones/manufacturers")
-        divs = self.find_elements_by_class(
-            resp,
-            "listing-item"
-        )
+        divs = self.find_elements_by_class(resp, "listing-item")
         manufacturers = set()
         # O(n)
         for div in divs:
-            devices_link = self.find_elements_by_class(
-                div, "listing-item-hover").pop().get("href")
-            name = self.find_elements_by_class(
-                div, "listing-item-hover-alt").pop().string
+            devices_link = (
+                self.find_elements_by_class(div, "listing-item-hover").pop().get("href")
+            )
+            name = (
+                self.find_elements_by_class(div, "listing-item-hover-alt").pop().string
+            )
             devices_link = devices_link.split(self.BASE_URL)[1]
             # O(1)
             manufacturer = Manufacturer(name=name, devices_link=devices_link)
@@ -50,19 +49,19 @@ class PhonearenaAPI(object):
         devices = set()
         # O(1)
         for page in range(self.MAX_PAGES):
-            endpoint = f"/phones/manufacturers/{manufacturer.name.lower()}/page/{page+1}"
+            endpoint = (
+                f"/phones/manufacturers/{manufacturer.name.lower()}/page/{page+1}"
+            )
             page_html = self.get(endpoint=endpoint)
             device_cards = self.find_elements_by_class(
-                page_html, "widget-tilePhoneCard")
+                page_html, "widget-tilePhoneCard"
+            )
             # O(n)
             for device_card in device_cards:
-                link = self.find_elements_by_tag(
-                    device_card, "a").pop().get("href")
+                link = self.find_elements_by_tag(device_card, "a").pop().get("href")
                 link = link.split(self.BASE_URL)[1]
-                name = self.find_elements_by_class(
-                    device_card, "title").pop().string
-                device = Device(name=name, link=link,
-                                manufacturer=manufacturer)
+                name = self.find_elements_by_class(device_card, "title").pop().string
+                device = Device(name=name, link=link, manufacturer=manufacturer)
                 # O(1)
                 devices.add(device)
         return devices
@@ -70,8 +69,7 @@ class PhonearenaAPI(object):
     def parse_device_specs(self, device):
         page_html = self.get(endpoint=device.link)
         specs = {}
-        specs_section = self.find_elements_by_class(
-            page_html, "widgetSpecs").pop()
+        specs_section = self.find_elements_by_class(page_html, "widgetSpecs").pop()
         specs_divs = self.find_elements_by_tag(specs_section, "section")
         for section in specs_divs:
             category = self.find_elements_by_tag(section, "h3").pop().string
