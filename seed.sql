@@ -15,7 +15,8 @@ CREATE TABLE users (
 CREATE TABLE keys (
   id SERIAL PRIMARY KEY,
   api_key TEXT NOT NULL,
-  user_id INT REFERENCES users
+  user_id INT REFERENCES users,
+  restricted BOOLEAN DEFAULT false
 );
 
 CREATE TABLE manufacturers (

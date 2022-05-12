@@ -4,7 +4,8 @@
 
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require('../config');
-const { UnauthorizedError } = require('../errors');
+const { UnauthorizedError, BadRequestError } = require('../errors');
+const Key = require('../models/key');
 
 
 /** Middleware: Authenticate user.
@@ -65,5 +66,5 @@ function ensureCorrectUser(req, res, next) {
 module.exports = {
   authenticateJWT,
   ensureLoggedIn,
-  ensureCorrectUser
+  ensureCorrectUser,
 };

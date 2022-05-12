@@ -9,7 +9,7 @@ class User {
     const { username, email } = userData;
 
     const existingUser = await db.query(
-      `SELECT *
+      `SELECT id, email, username, created_at, confirmed
       FROM Users
       WHERE username = $1
       OR email = $2`,
@@ -55,11 +55,7 @@ class User {
   }
 
   static async login(username = undefined, email = undefined, password = undefined) {
-    if (!username && !email) {
-      throw new BadRequestError('Invalid username/password');
-    }
-
-    if (!password) {
+    if ((!username && !email) || !password) {
       throw new BadRequestError('Invalid username/password');
     }
 
