@@ -1,0 +1,18 @@
+.Home {
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.Header {
+  width: 50%;
+  text-align: center;
+}
+
+.Header h1 {
+  font-size: 5rem;
+}
+
+.secondary {
+  color: #ffd700;
+}

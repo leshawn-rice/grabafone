@@ -5,11 +5,6 @@ const router = express.Router();
 
 const Key = require('../models/key');
 
-router.get('/', async (req, res, next) => {
-  console.log('Hello!');
-  return res.json({});
-});
-
 router.get('/get-key-id', ensureLoggedIn, async (req, res, next) => {
   try {
     const api_key_id = await Key.get(res.locals.user.id);

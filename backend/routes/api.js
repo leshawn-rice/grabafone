@@ -1,24 +1,14 @@
 // External Dependencies
 const express = require('express');
 // Internal Tools/Utils
-const { ensureHasAPIKey } = require('../helpers/utils');
+const { ensureHasAPIKey } = require('../middleware/auth');
 // DB Models
 const Device = require('../models/device');
 const Manufacturer = require('../models/manufacturer');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  try {
-    await ensureHasAPIKey(req, res, next);
-    return res.json({status: 'Succeeded!'});
-  }
-  catch (err) {
-    return next(err);
-  }
-});
-
-router.get('/devices', async (req, res, next) => {
+router.get('/devices', ensureHasAPIKey, async (req, res, next) => {
   try {
     const params = req.query;
     const devices = await Device.get(params.limit, params.offset, params.reversed, params.specs);
@@ -30,10 +20,10 @@ router.get('/devices', async (req, res, next) => {
   }
 });
 
-router.get('/manufacturers', async (req, res, next) => {
+router.get('/manufacturers', ensureHasAPIKey, async (req, res, next) => {
   try {
-    const {limit, offset, reversed} = req.query;
-    const manufacturers = await Manufacturer.get(limit, offset, reversed);
+    const params = req.query;
+    const manufacturers = await Manufacturer.get(params.limit, params.offset, params.reversed);
     if (!manufacturers) return res.json({manufacturers});
     return res.json({manufacturers});
   }
@@ -41,18 +31,5 @@ router.get('/manufacturers', async (req, res, next) => {
     return next(err);
   }
 });
-
-
-
-/*
-router.get('/', async (req, res, next) => {
-  try {
-
-  }
-  catch (err) {
-    return next(err);
-  }
-});
-*/
 
 module.exports = router;

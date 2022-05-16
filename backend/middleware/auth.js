@@ -62,9 +62,33 @@ function ensureCorrectUser(req, res, next) {
   }
 }
 
+const ensureHasAPIKey = async (req, res, next) => {
+  try {
+    const authHeader = req.headers && req.headers.authorization;
+    if (authHeader) {
+      const key = authHeader.replace(/^[Bb]earer /, '').trim();
+      if (!key) {
+        throw new BadRequestError('API Key Missing!');
+      }
+      const isKeyValid = await Key.validate_key(key);
+      if (!isKeyValid) {
+        throw new UnauthorizedError('Invalid API Key!');
+      }
+    }
+    else {
+      throw new BadRequestError('API Key Missing!');
+    }
+    return;
+  }
+  catch (err) {
+    return next(err);
+  }
+}
+
 
 module.exports = {
   authenticateJWT,
   ensureLoggedIn,
   ensureCorrectUser,
+  ensureHasAPIKey,
 };
