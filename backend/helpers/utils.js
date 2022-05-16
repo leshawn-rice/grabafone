@@ -3,18 +3,17 @@ const ensureHasAPIKey = async (req, res, next) => {
   try {
     const authHeader = req.headers && req.headers.authorization;
     if (authHeader) {
-      const key = authHeader.replace(/^[Kk]ey: /, '').trim();
+      const key = authHeader.replace(/^[Bb]earer /, '').trim();
       if (!key) {
-        throw new BadRequestError('Include API Key in authorization header in format `key: <API_KEY>`');
+        throw new BadRequestError('Include API Key in authorization header in format `Bearer <API_KEY>`');
       }
-      console.log(key);
       const isKeyValid = await Key.validate_key(key);
       if (!isKeyValid) {
         throw new UnauthorizedError('Invalid API Key!');
       }
     }
     else {
-      throw new BadRequestError('Include API Key in authorization header in format `key: <API_KEY>`');
+      throw new BadRequestError('Include API Key in authorization header in format `Bearer <API_KEY>`');
     }
     return;
   }
