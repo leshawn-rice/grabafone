@@ -1,0 +1,27 @@
+.Login {
+  display: flex;
+  width: inherit;
+  height: inherit;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Login-Header {
+  color: #ffd700;
+  text-align: center;
+  font-size: 5rem;
+}
+
+.Login-Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 25%;
+  height: 50%;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px black;
+  background-color: white;
+  margin: 2.5rem 0;
+}

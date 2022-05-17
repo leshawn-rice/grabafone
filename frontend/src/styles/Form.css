@@ -1,0 +1,72 @@
+.Form {
+  color: #121212;
+}
+
+.Form-Title {
+  font-size: 5rem;
+  color: #121212;
+  justify-self: flex-start;
+}
+
+.Form-InputGroup {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem;
+  width: inherit;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 2;
+  box-shadow: 0 0 2px #121212;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background-color: #6e6e6e;
+}
+
+.Form-InputGroup input {
+  border-radius: 1rem;
+  outline: none;
+  border: none;
+  height: 3rem;
+  margin: 0;
+  border: none;
+  width: 75%;
+  background-color: #6e6e6e;
+  box-sizing: border-box;
+}
+
+.Form-Inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Input-Logo {
+  color: #121212;
+  margin: 0 2rem;
+}
+
+.Form-Btn {
+  margin: 0;
+  width: 50%;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 3px #121212;
+  margin-top: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #121212;
+  background: linear-gradient(to right, #121212 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 500ms ease-out;
+}
+
+.Form-Btn:hover {
+  background-position: left bottom;
+  background-color: #121212;
+  color: white;
+  box-shadow: 0 0 3px white;
+}
