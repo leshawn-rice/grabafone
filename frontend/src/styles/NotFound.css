@@ -1,0 +1,23 @@
+html, 
+body, 
+#root {
+  overflow: hidden;
+}
+.NotFound {
+  display: flex;
+  text-align: center;
+  width: inherit;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+.NotFound-Content {
+  color: #ffffff;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.secondary {
+  color: #ffd700;
+}
