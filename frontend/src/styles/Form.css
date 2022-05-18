@@ -69,3 +69,9 @@
   background-color: #121212;
   color: white;
 }
+
+.Form-Footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -7,12 +7,6 @@
   align-items: center;
 }
 
-.Login-Header {
-  color: #ffd700;
-  text-align: center;
-  font-size: 5rem;
-}
-
 .Login-Form {
   display: flex;
   flex-direction: column;
@@ -24,4 +18,30 @@
   box-shadow: 0 0 5px #ffffff;
   background-color: #89bbfe;
   margin: 5rem 0;
+}
+
+.Login-Footer-Link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-weight: bold;
+  margin: 1rem 1rem;
+  box-shadow: 0 0 3px #121212;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.Login-Footer-Link:hover {
+  transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+@media only screen and (max-width: 600px) {
+  .Login-Form {
+    width: inherit;
+  }
 }

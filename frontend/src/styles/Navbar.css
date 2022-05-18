@@ -82,3 +82,12 @@
 .navlink:hover:after {
   width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+  .navbar-header {
+    margin: 0;
+  }
+  .navlink {
+    font-size: 1rem;
+  }
+}

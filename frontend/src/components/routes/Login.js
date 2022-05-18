@@ -6,6 +6,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import Form from '../form/Form';
 // Styles
 import '../../styles/Login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const INITIAL_DATA = {
@@ -34,6 +35,21 @@ const Login = () => {
     },
   ];
 
+  const footer = [
+    {
+      key: 'forgot-pw',
+      text: 'Forgot Password',
+      path: '/forgot-password',
+      classes: 'Login-Footer-Link',
+    },
+    {
+      key: 'create-acct',
+      text: 'Create an Account',
+      path: '/sign-up',
+      classes: 'Login-Footer-Link',
+    },
+  ];
+
   return (
     <div className="Login">
       <Form
@@ -43,6 +59,7 @@ const Login = () => {
         classes="Login-Form"
         title="Login"
         button_label="Login"
+        footer={footer}
       />
     </div>
   );

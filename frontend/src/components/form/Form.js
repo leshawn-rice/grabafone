@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // Styles
 import '../../styles/Form.css';
 
@@ -9,6 +10,7 @@ const Form = ({
   classes,
   title,
   button_label,
+  footer,
 }) => {
   const [formData, setFormData] = useState(INITIAL_DATA);
 
@@ -50,6 +52,17 @@ const Form = ({
         ))}
       </div>
       <button className="Form-Btn">{button_label}</button>
+      <div className="Form-Footer">
+        {footer.map((footerElement) => (
+          <Link
+            key={footerElement.key}
+            className={`Form-Footer-Link ${footerElement.classes}`}
+            to={footerElement.path}
+          >
+            {footerElement.text}
+          </Link>
+        ))}
+      </div>
     </form>
   );
 };
