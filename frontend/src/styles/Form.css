@@ -4,7 +4,7 @@
 
 .Form-Title {
   font-size: 5rem;
-  color: #121212;
+  color: #ffffff;
   justify-self: flex-start;
 }
 
@@ -16,10 +16,10 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 2;
-  box-shadow: 0 0 2px #121212;
+  box-shadow: 0 0 2px #6f8ab7;
   border-radius: 1rem;
   font-size: 1.5rem;
-  background-color: #6e6e6e;
+  background-color: #cae5ff;
 }
 
 .Form-InputGroup input {
@@ -30,7 +30,7 @@
   margin: 0;
   border: none;
   width: 75%;
-  background-color: #6e6e6e;
+  background-color: #cae5ff;
   box-sizing: border-box;
 }
 
@@ -52,13 +52,13 @@
   outline: none;
   border: none;
   box-shadow: 0 0 3px #121212;
-  margin-top: 3rem;
+  margin: 3rem 0;
   height: 3rem;
   border-radius: 1rem;
   cursor: pointer;
   background-color: #ffffff;
   color: #121212;
-  background: linear-gradient(to right, #121212 50%, #ffffff 50%);
+  background: linear-gradient(to right, #89bbfe 50%, #ffffff 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 500ms ease-out;
@@ -68,5 +68,4 @@
   background-position: left bottom;
   background-color: #121212;
   color: white;
-  box-shadow: 0 0 3px white;
 }

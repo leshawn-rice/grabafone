@@ -19,9 +19,9 @@
   align-items: center;
   justify-content: flex-start;
   width: 25%;
-  height: 50%;
+  height: fit-content;
   border-radius: 1rem;
-  box-shadow: 0 0 5px black;
-  background-color: white;
-  margin: 2.5rem 0;
+  box-shadow: 0 0 5px #ffffff;
+  background-color: #89bbfe;
+  margin: 5rem 0;
 }

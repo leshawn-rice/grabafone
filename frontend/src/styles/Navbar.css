@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #313131;
+  background-color: #6f8ab7;
   width: inherit;
   height: 5rem;
   font-size: 1.5rem;
@@ -69,14 +69,14 @@
   right: 0;
   margin: auto;
   width: 0%;
-  content: ".";
+  content: '.';
   color: transparent;
-  background: #ffd700;
+  background: #cae5ff;
   height: 1px;
 }
 
 .navlink:hover {
-  color: #ffd700;
+  color: #cae5ff;
 }
 
 .navlink:hover:after {
