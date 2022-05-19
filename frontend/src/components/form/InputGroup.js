@@ -1,7 +1,9 @@
+// External Dependencies
 import React from 'react';
+// Components
+import Input from './Input';
 // Styles
 import '../../styles/InputGroup.css';
-import Input from './Input';
 
 const InputGroup = ({ input, formData, handleChange }) => {
   return (
