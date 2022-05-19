@@ -1,0 +1,23 @@
+.Form-Btn {
+  margin: 0;
+  width: 50%;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 3px #121212;
+  margin: 3rem 0;
+  height: 3rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #121212;
+  background: linear-gradient(to right, #89bbfe 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 500ms ease-out;
+}
+
+.Form-Btn:hover {
+  background-position: left bottom;
+  background-color: #121212;
+  color: white;
+}

@@ -1,5 +1,9 @@
+// External Dependencies
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// Components
+import InputGroup from './InputGroup';
+import FormFooter from './FormFooter';
+import FormBtn from './FormBtn';
 // Styles
 import '../../styles/Form.css';
 
@@ -37,34 +41,11 @@ const Form = ({
       <h1 className="Form-Title">{title}</h1>
       <div className="Form-Inputs">
         {inputs.map((input) => (
-          <div key={input.name} className="Form-InputGroup">
-            {input.logo}
-            <input
-              className={`Form-Input ${input.classes ? input.classes : ''}`}
-              type={input.type}
-              name={input.name}
-              id={input.name}
-              placeholder={input.placeholder}
-              onChange={handleChange}
-              value={formData[input.name]}
-              required={input.required}
-            />
-            {input.button}
-          </div>
+          <InputGroup input={input} formData={formData} handleChange={handleChange} />
         ))}
       </div>
-      <button className="Form-Btn">{button_label}</button>
-      <div className="Form-Footer">
-        {footer.map((footerElement) => (
-          <Link
-            key={footerElement.key}
-            className={`Form-Footer-Link ${footerElement.classes}`}
-            to={footerElement.path}
-          >
-            {footerElement.text}
-          </Link>
-        ))}
-      </div>
+      <FormBtn label={button_label} />
+      <FormFooter footer={footer} />
     </form>
   );
 };

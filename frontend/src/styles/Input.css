@@ -1,0 +1,26 @@
+.Input-Logo {
+  color: #121212;
+  margin: 0 2rem;
+}
+
+.Input-Password-Btn {
+  color: #121212;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.Input-Password-Btn.shown {
+  color: #6f8ab7;
+}
+
+.Input {
+  border-radius: 1rem;
+  outline: none;
+  border: none;
+  height: 3rem;
+  margin: 0;
+  border: none;
+  width: 100%;
+  background-color: #cae5ff;
+  box-sizing: border-box;
+}

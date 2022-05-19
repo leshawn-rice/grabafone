@@ -8,80 +8,9 @@
   justify-self: flex-start;
 }
 
-.Form-InputGroup {
-  display: flex;
-  flex-direction: row;
-  margin: 0.5rem;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 2;
-  box-shadow: 0 0 2px #6f8ab7;
-  border-radius: 1rem;
-  font-size: 1.5rem;
-  background-color: #cae5ff;
-}
-
-.Form-InputGroup input {
-  border-radius: 1rem;
-  outline: none;
-  border: none;
-  height: 3rem;
-  margin: 0;
-  border: none;
-  width: 100%;
-  background-color: #cae5ff;
-  box-sizing: border-box;
-}
-
 .Form-Inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.Input-Logo {
-  color: #121212;
-  margin: 0 2rem;
-}
-
-.Input-Password-Btn {
-  color: #121212;
-  margin: 0 2rem;
-  cursor: pointer;
-}
-
-.Input-Password-Btn.shown {
-  color: #6f8ab7;
-}
-
-.Form-Btn {
-  margin: 0;
-  width: 50%;
-  outline: none;
-  border: none;
-  box-shadow: 0 0 3px #121212;
-  margin: 3rem 0;
-  height: 3rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #121212;
-  background: linear-gradient(to right, #89bbfe 50%, #ffffff 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 500ms ease-out;
-}
-
-.Form-Btn:hover {
-  background-position: left bottom;
-  background-color: #121212;
-  color: white;
-}
-
-.Form-Footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
