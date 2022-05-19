@@ -47,7 +47,9 @@ const Form = ({
               placeholder={input.placeholder}
               onChange={handleChange}
               value={formData[input.name]}
+              required={input.required}
             />
+            {input.button}
           </div>
         ))}
       </div>

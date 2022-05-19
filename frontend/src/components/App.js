@@ -6,6 +6,7 @@ import NotFound from './errors/NotFound';
 // Routes
 import Home from './routes/Home';
 import Login from './routes/Login';
+import SignUp from './routes/SignUp';
 // Styles
 import '../styles/App.css';
 
@@ -15,8 +16,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/sign-in" element={<Login />}></Route>
-        <Route path="/sign-up" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<SignUp />}></Route>
         <Route path="/contact" element={<Login />}></Route>
         <Route path="/faq" element={<Login />}></Route>
         <Route path="/docs" element={<Login />}></Route>

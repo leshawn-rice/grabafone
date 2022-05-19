@@ -28,10 +28,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-section navbar-dynamic-links navbar-links">
-        <NavLink to="/sign-in" className="navlink">
+        <NavLink to="/login" className="navlink">
           Login
         </NavLink>
-        <NavLink to="/sign-up" className="navlink">
+        <NavLink to="/register" className="navlink">
           Sign Up
         </NavLink>
         <NavLink to="/profile" className="navlink">

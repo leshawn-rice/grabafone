@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: row;
   margin: 0.5rem;
-  width: inherit;
+  width: 100%;
   justify-content: center;
   align-items: center;
   flex: 0 0 2;
@@ -29,7 +29,7 @@
   height: 3rem;
   margin: 0;
   border: none;
-  width: 75%;
+  width: 100%;
   background-color: #cae5ff;
   box-sizing: border-box;
 }
@@ -44,6 +44,16 @@
 .Input-Logo {
   color: #121212;
   margin: 0 2rem;
+}
+
+.Input-Password-Btn {
+  color: #121212;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.Input-Password-Btn.shown {
+  color: #6f8ab7;
 }
 
 .Form-Btn {

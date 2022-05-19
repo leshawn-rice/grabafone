@@ -1,18 +1,18 @@
-// External Dependencies
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faEye, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faEye } from '@fortawesome/free-solid-svg-icons';
 // Internal Dependencies
 import { revealPassword } from '../../utils';
 // Components
 import Form from '../form/Form';
 // Styles
-import '../../styles/Login.css';
+import '../../styles/SignUp.css';
 
-const Login = () => {
+const SignUp = () => {
   const INITIAL_DATA = {
     email: '',
     password: '',
+    confirm_password: '',
   };
 
   const handleFormSubmit = (evt) => {
@@ -41,36 +41,35 @@ const Login = () => {
         />
       ),
     },
-  ];
-
-  const footer = [
     {
-      key: 'forgot-pw',
-      text: 'Forgot Password',
-      path: '/forgot-password',
-      classes: 'Login-Footer-Link',
-    },
-    {
-      key: 'create-acct',
-      text: 'Create an Account',
-      path: '/register',
-      classes: 'Login-Footer-Link',
+      name: 'confirm_password',
+      type: 'password',
+      required: true,
+      placeholder: 'Confirm Password',
+      logo: <FontAwesomeIcon icon={faLock} className="Input-Logo" />,
+      button: (
+        <FontAwesomeIcon
+          icon={faEye}
+          onClick={revealPassword}
+          className="Input-Password-Btn"
+        />
+      ),
     },
   ];
 
   return (
-    <div className="Login">
+    <div className="SignUp">
       <Form
         INITIAL_DATA={INITIAL_DATA}
         handleFormSubmit={handleFormSubmit}
         inputs={inputs}
-        classes="Login-Form"
-        title="Login"
-        button_label="Login"
-        footer={footer}
+        classes="SignUp-Form"
+        title="Register"
+        button_label="Create Account"
+        footer={[]}
       />
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
