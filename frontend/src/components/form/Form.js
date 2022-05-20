@@ -33,7 +33,7 @@ const Form = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     resetForm();
-    handleFormSubmit();
+    handleFormSubmit(formData);
   };
 
   return (

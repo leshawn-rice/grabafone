@@ -5,9 +5,13 @@ const revealPassword = (evt) => {
   let iconElement = null;
 
   // Get the parent node
-  while (!target.classList.contains('Form-InputGroup')) {
+  if (!target) {
+    return;
+  }
+  while (!target.classList.contains('InputGroup')) {
     target = target.parentNode;
   }
+
   for (let node of target.children) {
     if (node.id.includes('password')) {
       pwElement = node;

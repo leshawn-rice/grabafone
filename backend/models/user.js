@@ -33,9 +33,13 @@ class User {
     }
   }
 
-  static async register(username = undefined, email = undefined, password = undefined) {
-    if (!username || !email || !password) {
+  static async register(username = undefined, email = undefined, password = undefined, confirm_password = undefined) {
+    if (!username || !email || !password || !confirm_password) {
       throw new BadRequestError('Missing Data');
+    }
+
+    if (password !== confirm_password) {
+      throw new BadRequestError('Passwords must match!')
     }
 
     await User.checkIfUserExists(false, { username, email });

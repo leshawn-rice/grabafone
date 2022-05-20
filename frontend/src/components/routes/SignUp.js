@@ -1,25 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faEye } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEnvelope,
+  faLock,
+  faEye,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 // Internal Dependencies
 import { revealPassword } from '../../utils';
+import { clearErrors, registerUserApi } from '../../redux/actionCreators';
 // Components
 import Form from '../form/Form';
 // Styles
 import '../../styles/SignUp.css';
+import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [dispatch]);
+
   const INITIAL_DATA = {
+    username: '',
     email: '',
     password: '',
     confirm_password: '',
   };
 
-  const handleFormSubmit = (evt) => {
-    console.log('Submitted Form!');
+  const handleFormSubmit = (formData) => {
+    dispatch(registerUserApi(formData));
   };
 
   const inputs = [
+    {
+      name: 'username',
+      type: 'username',
+      required: true,
+      placeholder: 'Username',
+      logo: <FontAwesomeIcon icon={faUser} className="Input-Logo" />,
+    },
     {
       name: 'email',
       type: 'email',

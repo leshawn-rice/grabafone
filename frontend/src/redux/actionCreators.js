@@ -231,4 +231,8 @@ export {
   updateEmailApi,
   updatePasswordApi,
   logoutUser,
+  clearErrors,
+  showErrors,
+  startLoading,
+  stopLoading,
 };

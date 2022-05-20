@@ -52,7 +52,7 @@ class BackendAPI {
    */
 
   static async login(loginData) {
-    let res = await this.request('auth/login', undefined, loginData, 'post');
+    let res = await this.request('login', undefined, loginData, 'post');
     return { token: res.token, user: res.user };
   }
 
@@ -61,12 +61,7 @@ class BackendAPI {
    */
 
   static async register(registerData) {
-    let res = await this.request(
-      'auth/register',
-      undefined,
-      registerData,
-      'post'
-    );
+    let res = await this.request('register', undefined, registerData, 'post');
     return { token: res.token, user: res.user };
   }
 
@@ -104,7 +99,7 @@ class BackendAPI {
 
   static async resendConfirmation(email) {
     let res = await this.request(
-      'auth/resend-confirmation-email',
+      'resend-confirmation-email',
       undefined,
       { email },
       'post'
@@ -118,7 +113,7 @@ class BackendAPI {
 
   static async confirmEmail(token) {
     let res = await this.request(
-      'auth/confirm-email',
+      'confirm-email',
       undefined,
       { emailToken: token },
       'post'

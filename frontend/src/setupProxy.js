@@ -13,7 +13,7 @@ const proxyTarget = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 const options = {
   target: proxyTarget,
   onError: onError,
-  changeOrigin: true,
+  changeOrigin: false,
 };
 
 const proxyMiddleware = createProxyMiddleware(options);

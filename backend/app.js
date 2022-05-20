@@ -2,6 +2,7 @@
 
 // External Dependencies
 const express = require('express');
+const cors = require('cors');
 // Internal Dependencies
 const { appLogger } = require('./config');
 const { NotFoundError } = require('./errors');
@@ -13,6 +14,7 @@ const apiRoutes = require('./routes/api');
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 // Enable logging
 // TODO throw this into a var to use custom logging if necessary
 app.use(appLogger)
