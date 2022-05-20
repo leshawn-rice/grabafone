@@ -41,7 +41,12 @@ const Form = ({
       <h1 className="Form-Title">{title}</h1>
       <div className="Form-Inputs">
         {inputs.map((input) => (
-          <InputGroup input={input} formData={formData} handleChange={handleChange} />
+          <InputGroup
+            key={input.name}
+            input={input}
+            formData={formData}
+            handleChange={handleChange}
+          />
         ))}
       </div>
       <FormBtn label={button_label} />
