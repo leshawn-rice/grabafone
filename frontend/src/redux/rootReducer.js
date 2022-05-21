@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, GENERATE_KEY, DELETE_KEY } from './actionTypes';
+import { LOGIN, LOGOUT, GENERATE_KEY, DELETE_KEY, SHOW_ERRORS, CLEAR_ERRORS } from './actionTypes';
 
 const INITIAL_STATE = {
   user: {},
@@ -41,6 +41,16 @@ const rootReducer = (state = INITIAL_STATE, action) => {
         ...state,
         api_key: null,
       };
+    case SHOW_ERRORS:
+      return {
+        ...state,
+        errors: action.payload
+      }
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        errors: []
+      }
     default:
       return state;
   }

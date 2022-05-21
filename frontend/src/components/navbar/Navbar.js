@@ -1,11 +1,29 @@
-import React from 'react';
+// External Dependencies
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+// Styles
 import '../../styles/Navbar.css';
 
-// TODO navbar-dynamic-links should be based on user state
-
 const Navbar = () => {
+  const [dynamicLinks, setDynamicLinks] = useState([
+    {path: '/login', text: 'Login', key: 'login'},
+    {path: '/register', text: 'Create an Account', key: 'register'}
+  ]);
+  const user = useSelector(state => state.user);
+
+  useEffect(() => {
+    if (user.username) {
+      setDynamicLinks([{path: '/profile', text: 'Profile', key: 'profile'}]);
+    }
+    else {
+      setDynamicLinks([
+        {path: '/login', text: 'Login', key: 'login'},
+        {path: '/register', text: 'Create an Account', key: 'register'}
+      ])
+    }
+  }, [user.username]);
+
   return (
     <div className="navbar">
       <div className="navbar-section">
@@ -28,15 +46,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-section navbar-dynamic-links navbar-links">
-        <NavLink to="/login" className="navlink">
-          Login
-        </NavLink>
-        <NavLink to="/register" className="navlink">
-          Sign Up
-        </NavLink>
-        <NavLink to="/profile" className="navlink">
-          Profile
-        </NavLink>
+        {dynamicLinks.map((link) => (
+          <NavLink key={link.key} to={link.path} className="navlink">
+            {link.text}
+          </NavLink>
+        ))}
       </div>
     </div>
   );

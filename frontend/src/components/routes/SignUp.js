@@ -6,6 +6,8 @@ import {
   faEye,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 // Internal Dependencies
 import { revealPassword } from '../../utils';
 import { clearErrors, registerUserApi } from '../../redux/actionCreators';
@@ -17,6 +19,7 @@ import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     return () => {
@@ -80,6 +83,8 @@ const SignUp = () => {
     },
   ];
 
+  if (user.username) return <Navigate to="/" />
+ 
   return (
     <div className="SignUp">
       <Form

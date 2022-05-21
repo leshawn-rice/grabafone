@@ -2,6 +2,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 // Internal Dependencies
 import { revealPassword } from '../../utils';
 // Components
@@ -18,6 +20,8 @@ const Login = () => {
   const handleFormSubmit = (evt) => {
     console.log('Submitted Form!');
   };
+
+  const user = useSelector(state => state.user);
 
   const inputs = [
     {
@@ -57,6 +61,8 @@ const Login = () => {
       classes: 'Login-Footer-Link',
     },
   ];
+
+  if (user.username) return <Navigate to="/" />
 
   return (
     <div className="Login">
