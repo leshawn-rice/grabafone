@@ -1,10 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeError } from '../../redux/actionCreators';
 // Styles
 import '../../styles/Alert.css';
 
 const Alert = ({error}) => {
+  const dispatch = useDispatch();
+
   const clearError = () => {
-    console.log("Clearing the error!");
+    dispatch(removeError(error.id));
   }
   return (
     <div className="Alert">

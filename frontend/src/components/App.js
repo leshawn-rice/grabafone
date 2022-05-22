@@ -1,25 +1,31 @@
+// External Dependencies
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+// Internal Dependencies
+import { clearErrors } from '../redux/actionCreators';
 // Components
 import Navbar from './navbar/Navbar';
 import NotFound from './errors/NotFound';
+import Alert from './errors/Alert';
 // Routes
 import Home from './routes/Home';
 import Login from './routes/Login';
 import SignUp from './routes/SignUp';
+import GenerateKey from './routes/GenerateKey';
+import Docs from './routes/Docs';
 // Styles
 import '../styles/App.css';
-import Alert from './errors/Alert';
-import { clearErrors } from '../redux/actionCreators';
 
 const App = () => {
   const dispatch = useDispatch();
   const errors = useSelector(state => state.errors);
 
   useEffect(() => {
-    if (errors.length) dispatch(clearErrors);
-  }, [errors.length, dispatch]);
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [dispatch]);
   
   return (
     <BrowserRouter>
@@ -33,8 +39,8 @@ const App = () => {
         <Route path="/register" element={<SignUp />}></Route>
         <Route path="/contact" element={<Login />}></Route>
         <Route path="/faq" element={<Login />}></Route>
-        <Route path="/docs" element={<Login />}></Route>
-        <Route path="/key" element={<Login />}></Route>
+        <Route path="/docs" element={<Docs />}></Route>
+        <Route path="/generate-key" element={<GenerateKey />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

@@ -1,27 +1,35 @@
 // External Dependencies
-import React from 'react';
+import React, {useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 // Internal Dependencies
 import { revealPassword } from '../../utils';
+import { loginUserApi, clearErrors } from '../../redux/actionCreators';
+
 // Components
 import Form from '../form/Form';
 // Styles
 import '../../styles/Login.css';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
   const INITIAL_DATA = {
     email: '',
     password: '',
   };
 
-  const handleFormSubmit = (evt) => {
-    console.log('Submitted Form!');
-  };
+  useEffect(() => {
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [dispatch]);
 
-  const user = useSelector(state => state.user);
+  const handleFormSubmit = (formData) => {
+    dispatch(loginUserApi(formData));
+  };
 
   const inputs = [
     {

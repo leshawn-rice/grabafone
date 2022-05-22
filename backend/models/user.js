@@ -63,7 +63,16 @@ class User {
       throw new BadRequestError('Invalid username/password');
     }
 
-    const user = await User.checkIfUserExists(true, { username, email });
+    await User.checkIfUserExists(true, { username, email });
+
+    const userRows =  await db.query(
+      `SELECT * FROM users
+      WHERE username=$1
+      OR email=$2`,
+      [username, email]
+    );
+
+    const user = userRows.rows[0];
 
     if (!(await bcrypt.compare(password, user.password))) {
       throw new BadRequestError('Invalid username/password');

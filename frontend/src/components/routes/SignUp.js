@@ -6,26 +6,20 @@ import {
   faEye,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
 // Internal Dependencies
 import { revealPassword } from '../../utils';
-import { clearErrors, registerUserApi } from '../../redux/actionCreators';
+import { registerUserApi, clearErrors } from '../../redux/actionCreators';
 // Components
 import Form from '../form/Form';
 // Styles
 import '../../styles/SignUp.css';
-import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-
-  useEffect(() => {
-    return () => {
-      dispatch(clearErrors());
-    };
-  }, [dispatch]);
 
   const INITIAL_DATA = {
     username: '',
@@ -33,6 +27,12 @@ const SignUp = () => {
     password: '',
     confirm_password: '',
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [dispatch]);
 
   const handleFormSubmit = (formData) => {
     dispatch(registerUserApi(formData));

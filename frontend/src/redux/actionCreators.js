@@ -1,3 +1,5 @@
+import uuid  from 'react-uuid';
+
 import {
   LOGIN,
   LOGOUT,
@@ -7,6 +9,7 @@ import {
   GENERATE_KEY,
   DELETE_KEY,
   SHOW_ERRORS,
+  REMOVE_ERROR,
   CLEAR_ERRORS,
 } from './actionTypes';
 
@@ -25,8 +28,8 @@ const startApiAction = () => {
     try {
       dispatch(startLoading());
       dispatch(clearErrors());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -43,15 +46,15 @@ const endApiAction = () => {
   return async function (dispatch) {
     try {
       dispatch(stopLoading());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
 
 /**
  *
- * @param {array} errs
+ * @param {array} errors
  *
  * handles any errors thrown in the process of interacting with the backend API
  *
@@ -59,10 +62,13 @@ const endApiAction = () => {
  *
  */
 
-const handleApiErrors = (errs) => {
+const handleApiErrors = (errors) => {
   return async function (dispatch) {
     dispatch(stopLoading());
-    dispatch(showErrors(errs));
+    for (let error of errors) {
+      error.id = uuid();
+    }
+    dispatch(showErrors(errors));
   };
 };
 /**
@@ -80,8 +86,8 @@ const registerUserApi = (userData) => {
       const { token, user } = await BackendAPI.register(userData);
       dispatch(loginUser({ token, user }));
       dispatch(endApiAction());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -101,8 +107,8 @@ const loginUserApi = (userData) => {
       const { token, user } = await BackendAPI.login(userData);
       dispatch(loginUser({ token, user }));
       dispatch(endApiAction());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -127,8 +133,8 @@ const updateEmailApi = (oldToken, username, email) => {
       );
       dispatch(updateUser({ token, user }));
       dispatch(endApiAction());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -155,8 +161,8 @@ const updatePasswordApi = (oldToken, username, oldPassword, newPassword) => {
       );
       dispatch(updateUser({ token, user }));
       dispatch(endApiAction());
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -174,8 +180,8 @@ const deleteUserApi = (token, username) => {
       dispatch(logoutUser());
       dispatch(endApiAction());
       dispatch(showErrors([{ message: message.message, status: 202 }]));
-    } catch (errs) {
-      dispatch(handleApiErrors(errs));
+    } catch (errors) {
+      dispatch(handleApiErrors(errors));
     }
   };
 };
@@ -218,6 +224,13 @@ const showErrors = (errors) => {
   };
 };
 
+const removeError = (error_id) => {
+  return {
+    type: REMOVE_ERROR,
+    payload: error_id
+  }
+}
+
 const clearErrors = () => {
   return {
     type: CLEAR_ERRORS,
@@ -232,6 +245,7 @@ export {
   updatePasswordApi,
   logoutUser,
   clearErrors,
+  removeError,
   showErrors,
   startLoading,
   stopLoading,

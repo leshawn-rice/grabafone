@@ -14,7 +14,10 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user.username) {
-      setDynamicLinks([{path: '/profile', text: 'Profile', key: 'profile'}]);
+      setDynamicLinks([
+        {path: '/profile', text: 'Profile', key: 'profile'},
+        {path: '/generate-key', text: 'Get an API Key', key: 'api-key'}
+      ]);
     }
     else {
       setDynamicLinks([
