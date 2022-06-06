@@ -1,0 +1,116 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  height: inherit;
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: inherit;
+  position: relative;
+  left: 0;
+  background-color: #7895c7;
+}
+
+.profile-sidebar-item {
+  display: flex;
+  height: 5rem;
+  font-size: 4rem;
+  background-color: #cae5ff;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.profile-text-bar {
+  width: 1rem;
+  height: inherit;
+  background-color: #121212;
+}
+
+.profile-sidebar-item:hover .profile-text-bar {
+  background-color: #89bbfe;
+}
+
+.profile-sidebar-item:hover .profile-text {
+  color: #89bbfe;
+}
+
+.profile-sidebar-item.active .profile-text-bar {
+  background-color: #89bbfe;
+}
+
+.profile-sidebar-item.active .profile-text {
+  color: #89bbfe;
+}
+
+.profile-text {
+  color: #121212;
+  text-decoration: none;
+}
+
+.profile-content {
+  display: flex;
+  width: 80%;
+  height: inherit;
+  position: relative;
+  right: 0;
+}
+
+.profile-content-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 5rem;
+}
+
+.profile-api-key {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.blurred {
+  /* text-shadow: 0 0 1.5rem #000; */
+  filter: blur(1.5rem);
+  -webkit-filter: blur(1.5rem);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.api-key-val {
+  height: fit-content;
+}
+
+.blurred-msg {
+  display: none;
+  position: absolute;
+  min-width: fit-content;
+  min-height: fit-content;
+  width: 25%;
+  height: 2.5rem;
+  top: 2rem;
+  right: 25%;
+  color: #ffffff;
+  background-color: #7895c7;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+.blurred:hover + .blurred-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

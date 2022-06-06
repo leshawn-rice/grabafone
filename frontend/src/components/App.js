@@ -16,6 +16,7 @@ import GenerateKey from './routes/GenerateKey';
 import Docs from './routes/Docs';
 // Styles
 import '../styles/App.css';
+import Profile from './routes/Profile';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<SignUp />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/contact" element={<Login />}></Route>
         <Route path="/faq" element={<Login />}></Route>
         <Route path="/docs" element={<Docs />}></Route>
