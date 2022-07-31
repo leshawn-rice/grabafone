@@ -1,0 +1,41 @@
+.generate-key {
+  width: inherit;
+  height: inherit;
+  padding: inherit;
+  margin: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generate-key-text {
+  font-size: 5rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.generate-key-button {
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 3px #121212;
+  margin: 3rem 0;
+  height: 5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #121212;
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #89bbfe 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 500ms ease-out;
+}
+
+.generate-key-button:hover {
+  background-position: left bottom;
+  background-color: #121212;
+  color: white;
+}

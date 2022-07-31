@@ -11,7 +11,10 @@ const Profile = () => {
   const apiKey = useSelector(state => state.api_key)
 
   const unblur = (evt) => {
-    const target = evt.target;
+    let target = evt.target;
+    if (!target.classList.contains('blurred')) {
+      target = document.querySelector('.blurred');
+    }
     target.classList.remove('blurred');
   }
 
@@ -28,8 +31,13 @@ const Profile = () => {
           <span className="api-key-val blurred" onClick={unblur}>
             {apiKey ? apiKey : ' Not Found'}
           </span>
-          <div className="blurred-msg">Click to reveal</div>
+          <div className="blurred-msg" onClick={unblur}>Click to reveal</div>
         </div>
+      </div>
+    ),
+    'logout': (
+      <div className="profile-content-body">
+
       </div>
     )
   }
@@ -61,6 +69,14 @@ const Profile = () => {
         <div className="profile-sidebar-item" id="api-key"  onClick={showSetting}>
           <div className="profile-text-bar"></div>
           <p className="profile-text">API Key</p>
+        </div>
+        <div className="profile-sidebar-item" id="logout"  onClick={showSetting}>
+          <div className="profile-text-bar"></div>
+          <p className="profile-text">Sign out</p>
+        </div>
+        <div className="profile-sidebar-item" id="logout"  onClick={showSetting}>
+          <div className="profile-text-bar"></div>
+          <p className="profile-text">Delete Account</p>
         </div>
       </div>
       <div className="profile-content">

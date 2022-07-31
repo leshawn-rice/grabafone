@@ -45,7 +45,7 @@ class Key {
     }
 
     const user = await db.query(`
-      SELECT username
+      SELECT username, confirmed
       FROM users
       WHERE id=$1`,
       [user_id]

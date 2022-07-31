@@ -8,6 +8,7 @@ import {
   STOP_LOADING,
   GENERATE_KEY,
   DELETE_KEY,
+  CHANGE_TOKEN,
   SHOW_ERRORS,
   REMOVE_ERROR,
   CLEAR_ERRORS,
@@ -186,6 +187,33 @@ const deleteUserApi = (token, username) => {
   };
 };
 
+const generateKeyApi = (token) => {
+  return async function(dispatch) {
+    try {
+      dispatch(startApiAction());
+      const { apiKey } = await BackendAPI.generateApiKey(token);
+      dispatch(generateKey(apiKey));
+      dispatch(endApiAction());
+    }
+    catch (errors) {
+      dispatch(handleApiErrors(errors));
+    }
+  }
+};
+
+const refreshTokenApi = (oldToken) => {
+  return async function(dispatch) {
+    try {
+      dispatch(startApiAction());
+      const { token } = await BackendAPI.refreshApiToken(oldToken);
+      dispatch(changeToken(token));
+      dispatch(endApiAction());
+    }
+    catch (errors) {
+      dispatch(handleApiErrors(errors));
+    }
+  }
+}
 const loginUser = (userData) => {
   return {
     type: LOGIN,
@@ -205,6 +233,21 @@ const logoutUser = () => {
     type: LOGOUT,
   };
 };
+
+const generateKey = (apiKey) => {
+  return {
+    type: GENERATE_KEY,
+    payload: apiKey
+  }
+};
+
+const changeToken = (token) => {
+  return {
+    type: CHANGE_TOKEN,
+    payload: token
+  }
+}
+
 const startLoading = () => {
   return {
     type: START_LOADING,
@@ -243,6 +286,8 @@ export {
   deleteUserApi,
   updateEmailApi,
   updatePasswordApi,
+  generateKeyApi,
+  refreshTokenApi,
   logoutUser,
   clearErrors,
   removeError,

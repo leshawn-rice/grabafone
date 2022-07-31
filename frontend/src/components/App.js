@@ -38,6 +38,7 @@ const App = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<SignUp />}></Route>
+        {/* Add logic to redirect if not logged in - protected routes */}
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/contact" element={<Login />}></Route>
         <Route path="/faq" element={<Login />}></Route>

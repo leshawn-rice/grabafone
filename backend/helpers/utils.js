@@ -8,8 +8,15 @@ const convertValue = (value=undefined) => {
       newValue = value;
   }
   return newValue;
-} 
+}
+
+const getEpoch = () => {
+  const now = new Date()  
+  const epoch = Math.round(now.getTime() / 1000)
+  return epoch;
+}
 
 module.exports = {
   convertValue,
+  getEpoch,
 }

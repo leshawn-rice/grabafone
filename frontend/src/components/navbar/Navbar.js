@@ -11,9 +11,15 @@ const Navbar = () => {
     {path: '/register', text: 'Create an Account', key: 'register'}
   ]);
   const user = useSelector(state => state.user);
+  const token = useSelector(state => state.token);
 
   useEffect(() => {
-    if (user.username) {
+    if (user.username && token) {
+      setDynamicLinks([
+        {path: '/profile', text: 'Profile', key: 'profile'},
+      ]);
+    }
+    else if (user.username) {
       setDynamicLinks([
         {path: '/profile', text: 'Profile', key: 'profile'},
         {path: '/generate-key', text: 'Get an API Key', key: 'api-key'}
@@ -25,7 +31,7 @@ const Navbar = () => {
         {path: '/register', text: 'Create an Account', key: 'register'}
       ])
     }
-  }, [user.username]);
+  }, [user.username, token]);
 
   return (
     <div className="navbar">

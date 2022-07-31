@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshTokenApi } from '../../redux/actionCreators';
 
 import '../../styles/Home.css';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.token);
+
+  useEffect(() => {
+    dispatch(refreshTokenApi(token));
+  }, [dispatch, token]);
+
   return (
     <div className="Home">
       <header className="Header">

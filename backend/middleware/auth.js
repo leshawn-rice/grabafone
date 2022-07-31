@@ -5,6 +5,7 @@
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require('../config');
 const { UnauthorizedError, BadRequestError } = require('../errors');
+const { getToken } = require('../helpers/tokens');
 const Key = require('../models/key');
 
 
@@ -19,13 +20,13 @@ const Key = require('../models/key');
 
 function authenticateJWT(req, res, next) {
   try {
-    const authHeader = req.headers && req.headers.authorization;
-    if (authHeader) {
-      const token = authHeader.replace(/^[Bb]earer /, '').trim();
+    const token = getToken(req);
+    if (token) {
       res.locals.user = jwt.verify(token, SECRET_KEY);
     }
     return next();
   } catch (err) {
+    console.log(err);
     return next();
   }
 }

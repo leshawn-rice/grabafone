@@ -86,8 +86,10 @@
 @media only screen and (max-width: 600px) {
   .navbar-header {
     margin: 0;
+    font-size: 2.5rem
   }
-  .navlink {
-    font-size: 1rem;
+  
+  .navbar-links {
+    display: none;
   }
 }

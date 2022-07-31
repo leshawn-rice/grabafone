@@ -18,19 +18,22 @@
 .profile-sidebar-item {
   display: flex;
   height: 5rem;
-  font-size: 4rem;
+  font-size: 2.5rem;
   background-color: #cae5ff;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   color: #ffffff;
   cursor: pointer;
   margin-bottom: 1rem;
+  padding-right: 1rem;
+  text-align: right;
 }
 
 .profile-text-bar {
   width: 1rem;
   height: inherit;
   background-color: #121212;
+  justify-self: flex-start;
 }
 
 .profile-sidebar-item:hover .profile-text-bar {
@@ -65,6 +68,7 @@
 .profile-content-body {
   display: flex;
   justify-content: center;
+  text-align: center;
   width: 100%;
   font-size: 5rem;
 }
@@ -72,13 +76,13 @@
 .profile-api-key {
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
+  width: 80%;
 }
 
 .blurred {
   /* text-shadow: 0 0 1.5rem #000; */
   filter: blur(1.5rem);
-  -webkit-filter: blur(1.5rem);
+  -webkit-filter: blur(1rem);
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -105,6 +109,7 @@
   color: #ffffff;
   background-color: #7895c7;
   font-size: 2.5rem;
+  z-index: 10;
   font-weight: bold;
   border-radius: 1rem;
 }
@@ -113,4 +118,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 915px) {
+  .profile-api-key {
+    width: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;;
+  }
+
+  .profile-sidebar {
+    width: 40%;
+  }
+
+  .profile-content {
+    width: 60%;
+  }
+  
+  .profile-content-body {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .blurred {
+    color: black;
+    box-shadow: 0 0 5px black;
+  }
+
+  .profile-sidebar-item {
+    height: 6rem;
+  }
+  
 }

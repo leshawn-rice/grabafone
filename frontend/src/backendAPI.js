@@ -139,7 +139,17 @@ class BackendAPI {
     return { message: res.message };
   }
 
+  static async refreshApiToken(oldToken) {
+    let res = await this.request(`refresh-token`, oldToken, {}, 'get');
+    return {token: res.token};
+  }
+
   // API Key Routes
+
+  static async generateApiKey(token) {
+    let res = await this.request(`key/create`, token, {}, 'post');
+    return {apiKey: res.api_key}
+  }
 }
 
 export default BackendAPI;

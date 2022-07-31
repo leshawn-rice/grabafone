@@ -1,7 +1,36 @@
 'use strict'
 
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = require('../config')
+const { SECRET_KEY } = require('../config');
+const { getEpoch } = require('./utils');
+
+const getToken = (req) => {
+  const authHeader = req.headers && req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.replace(/^[Bb]earer /, '').trim();
+    return token;
+  }
+  return null;
+}
+
+const refreshToken = (token) => {
+  try {
+    const currentTime = getEpoch();
+    const decodedToken = jwt.decode(token, SECRET_KEY);
+    const isExpired = decodedToken.exp <= currentTime;
+    let tokenToSend = token;
+    if (isExpired) {
+      const user = { ...decodedToken };
+      delete user.iat;
+      delete user.exp;
+      tokenToSend = createUserToken(user); 
+    }
+    return tokenToSend;
+  }
+  catch (err) {
+    return token;
+  }
+}
 
 // Creates a token for a user with a 30min expiry date
 const createUserToken = (user) => {
@@ -24,5 +53,7 @@ const isTokenValid = (token) => {
 
 module.exports = {
   createUserToken,
-  isTokenValid
+  isTokenValid,
+  getToken,
+  refreshToken
 };
