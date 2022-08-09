@@ -16,12 +16,12 @@ const Navbar = () => {
   useEffect(() => {
     if (user.username && token) {
       setDynamicLinks([
-        {path: '/profile', text: 'Profile', key: 'profile'},
+        {path: '/settings', text: 'Settings', key: 'settings'},
       ]);
     }
     else if (user.username) {
       setDynamicLinks([
-        {path: '/profile', text: 'Profile', key: 'profile'},
+        {path: '/settings', text: 'Settings', key: 'settings'},
         {path: '/generate-key', text: 'Get an API Key', key: 'api-key'}
       ]);
     }

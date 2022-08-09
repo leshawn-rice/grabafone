@@ -15,6 +15,7 @@ const Form = ({
   title,
   button_label,
   footer,
+  messages=[],
 }) => {
   const [formData, setFormData] = useState(INITIAL_DATA);
 
@@ -46,6 +47,17 @@ const Form = ({
             input={input}
             formData={formData}
             handleChange={handleChange}
+          />
+        ))}
+        {messages.map((idx, message) => (
+          <textarea
+           id={message.id}
+           name={message.name ? message.name : 'message'}
+           key={message.key ? message.key : idx}
+           cols={message.width ? message.width : 100} 
+           rows={message.height ? message.height : 25}
+           placeholder={message.placeholder ? message.placeholder : 'I found a bug!'}
+           onChange={handleChange}
           />
         ))}
       </div>

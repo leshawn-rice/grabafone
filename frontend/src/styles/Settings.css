@@ -1,63 +1,76 @@
-.profile {
+.settings {
   display: flex;
   flex-direction: row;
   width: inherit;
   height: inherit;
 }
 
-.profile-sidebar {
+.settings-sidebar {
   display: flex;
   flex-direction: column;
   width: 20%;
   height: inherit;
   position: relative;
   left: 0;
-  background-color: #7895c7;
+  border: 0.25rem solid #7895c7;
+  border-top: none;
 }
 
-.profile-sidebar-item {
+.settings-user {
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 0.25rem solid #7895c7;
+}
+
+.settings-user-email {
+  color: #121212;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.settings-sidebar-item {
   display: flex;
   height: 5rem;
   font-size: 2.5rem;
-  background-color: #cae5ff;
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
   cursor: pointer;
-  margin-bottom: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   text-align: right;
+  border-bottom: 0.1rem solid #7895c7;
 }
 
-.profile-text-bar {
+.settings-text-bar {
   width: 1rem;
   height: inherit;
   background-color: #121212;
-  justify-self: flex-start;
+  justify-self: flex-end;
 }
 
-.profile-sidebar-item:hover .profile-text-bar {
-  background-color: #89bbfe;
+.settings-sidebar-item:hover .settings-text-bar {
+  background-color: #cae5ff;
 }
 
-.profile-sidebar-item:hover .profile-text {
-  color: #89bbfe;
+.settings-sidebar-item:hover .settings-text {
+  color: #cae5ff;
 }
 
-.profile-sidebar-item.active .profile-text-bar {
-  background-color: #89bbfe;
+.settings-sidebar-item.active .settings-text-bar {
+  background-color: #cae5ff;
 }
 
-.profile-sidebar-item.active .profile-text {
-  color: #89bbfe;
+.settings-sidebar-item.active .settings-text {
+  color: #cae5ff;
 }
 
-.profile-text {
+.settings-text {
   color: #121212;
   text-decoration: none;
 }
 
-.profile-content {
+.settings-content {
   display: flex;
   width: 80%;
   height: inherit;
@@ -65,7 +78,7 @@
   right: 0;
 }
 
-.profile-content-body {
+.settings-content-body {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -73,7 +86,7 @@
   font-size: 5rem;
 }
 
-.profile-api-key {
+.settings-api-key {
   display: flex;
   justify-content: space-evenly;
   width: 80%;
@@ -120,8 +133,13 @@
   align-items: center;
 }
 
+.settings-copyright {
+  margin: 1rem;
+  font-size: 1.25rem;
+}
+
 @media only screen and (max-width: 915px) {
-  .profile-api-key {
+  .settings-api-key {
     width: inherit;
     flex-direction: column;
     justify-content: center;
@@ -129,15 +147,15 @@
     font-size: 2rem;;
   }
 
-  .profile-sidebar {
+  .settings-sidebar {
     width: 40%;
   }
 
-  .profile-content {
+  .settings-content {
     width: 60%;
   }
   
-  .profile-content-body {
+  .settings-content-body {
     justify-content: center;
     text-align: center;
   }
@@ -147,7 +165,7 @@
     box-shadow: 0 0 5px black;
   }
 
-  .profile-sidebar-item {
+  .settings-sidebar-item {
     height: 6rem;
   }
   
