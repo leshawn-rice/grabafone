@@ -38,22 +38,28 @@ class Manufacturer {
   static async get_by_id(id=undefined) {
     if (!id) throw new BadRequestError('Manufacturer ID Required!')
 
-    const manufacturer = await db.query(`
+    const manufacturers = await db.query(`
       SELECT id, name
       FROM manufacturers
       WHERE id=$1`,
       [id]
     );
 
+    if (!manufacturers.rows.length) {
+      throw new BadRequestError(`No Manufacturer with ID ${id}`)
+    }
+
+    const manufacturer = manufacturers.rows.pop()
+
     const devices = await db.query(`
       SELECT id, name
       FROM devices
       WHERE manufacturer_id=$1`,
-      [manufacturer.rows[0].id]
+      [manufacturer.id]
     );
     
-    manufacturer.rows[0].devices = devices.rows;
-    return manufacturer.rows;
+    manufacturer.devices = devices.rows;
+    return manufacturer;
   }
 }
 
