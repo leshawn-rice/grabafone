@@ -1,6 +1,6 @@
 // DB Models
-const Device = require('../models/device');
-const Manufacturer = require('../models/manufacturer');
+const Device = require('../models/device.model');
+const Manufacturer = require('../models/manufacturer.model');
 
 const getDevices = async (req, res, next) => {
   try {

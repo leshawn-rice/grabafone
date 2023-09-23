@@ -26,7 +26,7 @@ const register = async (req, res, next) => {
   }
 };
 
-const refreshToken = async (req, res, next) => {
+const renewToken = async (req, res, next) => {
   try {
     const token = getToken(req);
     const newToken = refreshToken(token);
@@ -40,5 +40,5 @@ const refreshToken = async (req, res, next) => {
 module.exports = {
   register,
   login,
-  refreshToken
+  renewToken
 };

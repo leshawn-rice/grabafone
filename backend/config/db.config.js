@@ -7,3 +7,7 @@ function getDatabaseUri() {
     ? `postgresql://dev:password@localhost/${databaseName}_test`
     : process.env.DATABASE_URL || `postgresql://dev:password@localhost/${databaseName}`;
 }
+
+module.exports = {
+  getDatabaseUri
+}
