@@ -1,6 +1,8 @@
 .Input-Logo {
   color: #121212;
-  margin: 0 2rem;
+  margin-left: 2rem;
+  justify-self: flex-start;
+  
 }
 
 .Input-Password-Btn {
@@ -18,9 +20,12 @@
   outline: none;
   border: none;
   height: 3rem;
-  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border: none;
-  width: 100%;
+  /* max-width: 90%; */
   background-color: #cae5ff;
   box-sizing: border-box;
+  text-align: left;
+  width: inherit;
 }

@@ -1,0 +1,14 @@
+
+$darkColor: #121212;
+$lightGrayBlueColor: #cae5ff;
+$lightBlueColor: #acedff; // not used
+$blueColor: #89bbfe;
+$darkGrayBlueColor: #6f8ab7;
+
+$defaultTextColor: $darkColor;
+$defaultBackgroundColor: $blueColor;
+$defaultNavBackgroundColor: $darkGrayBlueColor;
+
+@mixin theme($theme: $themePrimary) {
+  @if $theme
+}

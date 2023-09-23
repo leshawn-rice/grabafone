@@ -3,11 +3,12 @@
   flex-direction: row;
   margin: 0.5rem;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex: 0 0 2;
   box-shadow: 0 0 2px #6f8ab7;
   border-radius: 1rem;
   font-size: 1.5rem;
   background-color: #cae5ff;
+  padding: 1rem;
 }

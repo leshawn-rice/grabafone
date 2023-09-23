@@ -3,6 +3,7 @@
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require('../config');
 const { getEpoch } = require('./utils');
+const { BadRequestError } = require('../errors');
 
 const getToken = (req) => {
   const authHeader = req.headers && req.headers.authorization;
@@ -15,6 +16,12 @@ const getToken = (req) => {
 
 const refreshToken = (token) => {
   try {
+    if (token === null) {
+      throw new BadRequestError('No token provided');
+    }
+    if (!isTokenValid(token)) {
+      return null
+    }
     const currentTime = getEpoch();
     const decodedToken = jwt.decode(token, SECRET_KEY);
     const isExpired = decodedToken.exp <= currentTime;

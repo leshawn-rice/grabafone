@@ -1,7 +1,7 @@
 // External Dependencies
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faEye, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faEye, faLock, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 // Internal Dependencies
@@ -14,6 +14,7 @@ import Form from '../form/Form';
 import '../../styles/Login.css';
 
 const Login = () => {
+  const [passwordIcon, setPasswordIcon] = useState(faEyeSlash)
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const INITIAL_DATA = {
@@ -31,6 +32,14 @@ const Login = () => {
     dispatch(loginUserApi(formData));
   };
 
+  const togglePassword = (evt) => {
+    setPasswordIcon(current => {
+      if (current === faEyeSlash) return faEye;
+      if (current === faEye) return faEyeSlash;
+    });
+    revealPassword(evt);
+  }
+
   const inputs = [
     {
       name: 'email',
@@ -47,8 +56,8 @@ const Login = () => {
       logo: <FontAwesomeIcon icon={faLock} className="Input-Logo" />,
       button: (
         <FontAwesomeIcon
-          icon={faEye}
-          onClick={revealPassword}
+          icon={passwordIcon}
+          onClick={togglePassword}
           className="Input-Password-Btn"
         />
       ),

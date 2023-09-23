@@ -33,6 +33,7 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.3",
     "pg": "^8.7.1",
+    "supertest": "^6.3.3",
     "winston": "^3.6.0"
   }
 }

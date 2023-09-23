@@ -16,6 +16,7 @@ import GenerateKey from './routes/GenerateKey';
 import Docs from './routes/Docs';
 import Settings from './routes/Settings';
 import Contact from './routes/Contact';
+import SignOut from './routes/SignOut';
 
 // Styles
 import '../styles/App.css';
@@ -33,9 +34,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      {errors.map((error) => (
-        <Alert key={error.message} error={error} />
-      ))}
+      <div className="Errors">
+        {errors.map((error) => (
+          <Alert key={error.message} error={error} />
+        ))}
+      </div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -46,6 +49,7 @@ const App = () => {
         <Route path="/faq" element={<Login />}></Route>
         <Route path="/docs" element={<Docs />}></Route>
         <Route path="/generate-key" element={<GenerateKey />}></Route>
+        <Route path="/sign-out" element={<SignOut />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

@@ -17,12 +17,13 @@ const Navbar = () => {
     if (user.username && token) {
       setDynamicLinks([
         {path: '/settings', text: 'Settings', key: 'settings'},
+        {path: '/sign-out', text: 'Sign Out', key: 'sign-out'}
       ]);
     }
     else if (user.username) {
       setDynamicLinks([
         {path: '/settings', text: 'Settings', key: 'settings'},
-        {path: '/generate-key', text: 'Get an API Key', key: 'api-key'}
+        {path: '/generate-key', text: 'Get an API Key', key: 'api-key'},
       ]);
     }
     else {

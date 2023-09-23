@@ -1,4 +1,4 @@
-const { BadRequestError, InternalServerError } = require('../errors');
+const { BadRequestError, InternalServerError, UnauthorizedError } = require('../errors');
 const bcrypt = require('bcrypt');
 const db = require('../db');
 const { BCRYPT_WORK_FACTOR } = require('../config');
@@ -17,7 +17,7 @@ class User {
     );
 
     if (existingUser.rows.length && !shouldExist) {
-      throw new BadRequestError('User Exists');
+      throw new BadRequestError('User already exists');
     }
     else if (!existingUser.rows.length && shouldExist) {
       throw new BadRequestError('Invalid username/password');
@@ -75,7 +75,7 @@ class User {
     const user = userRows.rows[0];
 
     if (!(await bcrypt.compare(password, user.password))) {
-      throw new BadRequestError('Invalid username/password');
+      throw new UnauthorizedError('Invalid username/password');
     }
 
     delete user.password;

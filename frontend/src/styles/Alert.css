@@ -1,45 +1,94 @@
 .Alert {
-  display: flex;
-  align-items: center;
-  background-color: #f4433691; /* Red */
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  height: 5rem;
-  width: 50%;
-  margin: 1rem 25%;
-  font-weight: bold;
-  border-radius: 1rem;
-  transition: all 500ms;
+  width: fit-content;
+  top: 1.5rem;
+  position: relative;
+  border-radius: 1.2rem;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 }
 
-.Alert-Content {
-  width: 98%;
-  height: inherit;
-  text-align: center;
-  font-size: 2rem;
+.Alert {
+  transform: translateX(0%);
+}
+
+.Alert .Alert-Content {
+  display: flex;
+  align-items: center;
+}
+
+.Alert-Content .Exclamation {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.Alert-Close {
-  display: flex;
-  width: 2%;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  justify-self: flex-end;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  background-color: #f4433691;
+  color: #121212;
   font-size: 2rem;
-  cursor: pointer;
-  transition: all 500ms;
-  margin: 0.5rem;
-  /* background-color: blue; */
-  box-shadow: 0 0 3px black;
+  border-radius: 50%;
   padding: 0.5rem;
-  border-radius: 1rem;
+}
+
+.Alert-Content .Alert-Message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.Alert-Message .Alert-Text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.Alert-Message .Alert-Header {
+  font-weight: 600;
+  color: #333;
+}
+
+.Alert .Alert-Close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 2rem;
 }
 
 .Alert-Close:hover {
-  /* color: #121212; */
-  background-color: #f44336;
+  opacity: 1;
+}
+
+.Alert .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.Alert .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f4433691;
+}
+
+.progress.active:before {
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
 }
