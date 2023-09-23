@@ -1,4 +1,4 @@
-const db = require('../../db');
+const db = require('../../services/db.service');
 
 async function commonBeforeAll() {
   // noinspection SqlWithoutWhere

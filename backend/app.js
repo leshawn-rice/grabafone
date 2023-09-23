@@ -3,13 +3,15 @@
 // External Dependencies
 const express = require('express');
 const cors = require('cors');
-// Internal Dependencies
-const { appLogger } = require('./config');
-const { NotFoundError } = require('./errors');
-const { authenticateJWT } = require('./middleware/auth');
-const authRoutes = require('./routes/auth');
-const keyRoutes = require('./routes/keys');
-const apiRoutes = require('./routes/api');
+// Configurations
+const { appLogger } = require('./config/logging.config');
+const { NotFoundError } = require('./config/errors.config');
+const { authenticateJWT } = require('./middleware/auth.middleware');
+
+
+const authRoutes = require('./routes/auth.route');
+const keyRoutes = require('./routes/keys.route');
+const apiRoutes = require('./routes/api.route');
 
 const app = express();
 

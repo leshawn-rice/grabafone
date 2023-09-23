@@ -4,7 +4,7 @@
 const { Client } = require('pg');
 
 /** Database setup for grabaphone. */
-const { getDatabaseUri } = require('./config');
+const { getDatabaseUri } = require('../config/db.config');
 const db = new Client({
   connectionString: getDatabaseUri(),
 });

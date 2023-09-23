@@ -16,7 +16,12 @@ const getEpoch = () => {
   return epoch;
 }
 
+const convertTimestamp = (timestamp) => {
+  return timestamp.toUTCString();
+}
+
 module.exports = {
   convertValue,
+  convertTimestamp,
   getEpoch,
 }

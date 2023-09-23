@@ -1,7 +1,9 @@
-const { BadRequestError, InternalServerError, UnauthorizedError } = require('../errors');
+// External
 const bcrypt = require('bcrypt');
-const db = require('../db');
-const { BCRYPT_WORK_FACTOR } = require('../config');
+// Internal
+const { BadRequestError, InternalServerError, UnauthorizedError } = require('../config/errors.config');
+const db = require('../services/db.service');
+const { BCRYPT_WORK_FACTOR } = require('../config/general.config');
 
 class User {
 

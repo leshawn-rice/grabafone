@@ -1,6 +1,6 @@
-const db = require('../db');
-const { BadRequestError, UnauthorizedError } = require('../errors');
-const { convertValue } = require('../helpers/utils');
+const db = require('../services/db.service');
+const { BadRequestError, UnauthorizedError } = require('../config/errors.config');
+const { convertValue } = require('../helpers/utils.helper');
 
 class Device {
   static async get(limit=100, offset=0, reversed=false, specifications=undefined) {

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /** ExpressError extends normal JS error so we can
 *  add a status when we make an instance of it.

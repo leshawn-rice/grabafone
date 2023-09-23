@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-const { EMAIL_ADDRESS, EMAIL_PASSWORD, utilLogger } = require('../config');
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = require('../config/general.config');
+const { utilLogger } = require('../config/logging.config')
 
 
 const email_transporter = nodemailer.createTransport({

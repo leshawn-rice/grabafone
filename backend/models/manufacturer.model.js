@@ -1,5 +1,5 @@
-const db = require('../db');
-const { BadRequestError, UnauthorizedError } = require('../errors');
+const db = require('../services/db.service');
+const { BadRequestError, UnauthorizedError } = require('../config/errors.config');
 
 class Manufacturer {
   static async get(limit=100, offset=0, reversed=false) {

@@ -1,6 +1,8 @@
-const db = require('../db');
-const { BadRequestError, UnauthorizedError } = require('../errors');
+// External
 const generateApiKey = require('generate-api-key');
+// Internal
+const db = require('../services/db.service');
+const { BadRequestError, UnauthorizedError } = require('../config/errors.config');
 
 class Key {
   static async get(user_id) {

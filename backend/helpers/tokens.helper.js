@@ -1,9 +1,10 @@
 'use strict'
-
+// External
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = require('../config');
-const { getEpoch } = require('./utils');
-const { BadRequestError } = require('../errors');
+// Internal
+const { SECRET_KEY } = require('../config/general.config');
+const { getEpoch } = require('./utils.helper');
+const { BadRequestError } = require('../config/errors.config');
 
 const getToken = (req) => {
   const authHeader = req.headers && req.headers.authorization;
