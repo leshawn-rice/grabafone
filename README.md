@@ -63,7 +63,7 @@ Grabafone exposes a collection of endpoints to help you interact with cellular d
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/grabafone.git
+   git clone https://github.com/leshawn-rice/grabafone.git
    cd grabafone
    ```
 
