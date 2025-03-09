@@ -1,0 +1,213 @@
+// sidebar.scss
+
+// @use '../index.scss' as *;
+// @use '../pages/home.scss' as *;
+@use '../base/colors.scss' as *;
+@use '../base/typography.scss' as *;
+
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  background-color: $gray-900;
+  height: 100vh;
+  width: 12vw;
+
+  // When minimized, reduce width
+  &.minimized {
+    width: 5vw;
+    .navigation ul li a {
+      padding: 1rem;
+    }
+
+    .footer  {
+      padding: 0;
+      margin: 0;
+      width: inherit;
+
+      .login {
+        width: 75%;
+        justify-self: center;
+        justify-content: center;
+
+        span {
+          display: none;
+        }
+      }
+
+      .logout {
+        width: 75%;
+        justify-self: center;
+        justify-content: center;
+
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+  transition: width 0.3s ease;
+}
+
+.sidebar .brand {
+  margin-bottom: 2rem;
+}
+
+.sidebar .brand .brand-title {
+  color: $text-color;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.sidebar .brand .toggle-btn {
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:focus {
+    outline: none
+  }
+}
+
+.sidebar .navigation {
+  flex: 1;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0.5rem 0;
+      padding: 0;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        color: $text-color;
+        text-decoration: none;
+        padding: 1rem 0;
+        transition: background-color 0.3s ease;
+
+        span {
+          margin: 0 1rem;
+        }
+
+        &:hover {
+          background-color: $gray-600;
+          color: $white-000;
+        }
+      }
+
+      a.active {
+        background-color: $gray-800;
+      }
+    }
+    
+  }
+}
+
+.sidebar .footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+// Responsive adjustments
+
+// For devices with a max-width of 1024px (small desktops/tablets)
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 12vw;
+    padding: 0.8rem;
+  }
+  .sidebar .navigation a {
+    padding: 0.8rem;
+  }
+}
+
+// For devices with a max-width of 768px (tablets)
+@media (max-width: 768px) {
+  .sidebar {
+    width: 18vw;
+    padding: 0.5rem;
+  }
+  .sidebar .brand .brand-title {
+    font-size: 1.2rem;
+  }
+  .sidebar .navigation a {
+    padding: 0.5rem;
+    // Optionally hide the label text on narrower screens to save space
+    span {
+      display: none;
+    }
+  }
+  // Hide footer links to simplify the layout
+  .sidebar .footer {
+    display: none;
+  }
+}
+
+// For devices with a max-width of 480px (mobile phones)
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%); // hide the sidebar by default
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  // When the sidebar has the "active" class, slide it into view
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  .sidebar .navigation a {
+    justify-content: center;
+    padding: 1rem;
+  }
+  // Optionally hide the brand on mobile to further simplify the layout
+  .sidebar .brand {
+    display: none;
+  }
+}
+
+.sidebar.minimized {
+  .brand-title,
+  .navigation span,
+  .footer span {
+    opacity: 0;
+  }
+}

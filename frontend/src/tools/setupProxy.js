@@ -8,7 +8,7 @@ const onError = (err, req, res) => {
   res.json(response);
 };
 
-const proxyTarget = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
+const proxyTarget = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 
 const options = {
   target: proxyTarget,

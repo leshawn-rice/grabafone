@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom'; 
-import { logoutUser } from '../../redux/actionCreators';
+import { logoutUser } from '../redux/actionCreators';
 
-const SignOut = () => {
+const Logout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,4 +13,4 @@ const SignOut = () => {
   return <Navigate to="/" />;
 }
 
-export default SignOut;
+export default Logout;

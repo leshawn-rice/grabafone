@@ -14,7 +14,7 @@ import {
   CLEAR_ERRORS,
 } from './actionTypes';
 
-import BackendAPI from '../backendAPI';
+import BackendAPI from '../tools/backendAPI';
 
 /**
  *

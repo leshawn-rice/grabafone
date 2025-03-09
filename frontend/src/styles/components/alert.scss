@@ -1,9 +1,13 @@
+@use '../base/colors.scss' as *;
+@use '../base/typography.scss' as *;
+
+
 .Alert {
   width: fit-content;
   top: 1.5rem;
   position: relative;
   border-radius: 1.2rem;
-  background: #fff;
+  background: $white-000;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -26,8 +30,8 @@
   justify-content: center;
   height: 3.5rem;
   min-width: 3.5rem;
-  background-color: #f4433691;
-  color: #121212;
+  background-color: $error-color;
+  color: $background-color;
   font-size: 2rem;
   border-radius: 50%;
   padding: 0.5rem;
@@ -80,7 +84,7 @@
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: #f4433691;
+  background-color: $error-color;
 }
 
 .progress.active:before {

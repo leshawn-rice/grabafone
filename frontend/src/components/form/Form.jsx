@@ -5,7 +5,7 @@ import InputGroup from './InputGroup';
 import FormFooter from './FormFooter';
 import FormBtn from './FormBtn';
 // Styles
-import '../../styles/Form.css';
+import '../../styles/components/form.scss';
 
 const Form = ({
   INITIAL_DATA,

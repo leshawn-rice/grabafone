@@ -1,10 +1,14 @@
+@use '../base/colors.scss' as *;
+@use '../base/typography.scss' as *;
+
+
 .Form {
-  color: #121212;
+  color: $gray-800;
 }
 
 .Form-Title {
   font-size: 5rem;
-  color: #ffffff;
+  color: $gray-900;
   justify-self: flex-start;
 }
 
@@ -13,4 +17,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: $gray-900
 }

@@ -1,14 +1,14 @@
 .settings {
   display: flex;
   flex-direction: row;
-  width: inherit;
+  width: 100vw;
   height: inherit;
 }
 
 .settings-sidebar {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 25%;
   height: inherit;
   position: relative;
   left: 0;

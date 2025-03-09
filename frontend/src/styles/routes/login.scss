@@ -1,9 +1,12 @@
+@use '../base/colors.scss' as *;
+@use '../base/typography.scss' as *;
+
 .Login {
   display: flex;
   width: inherit;
   height: inherit;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -12,12 +15,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 25%;
-  height: fit-content;
+  width: 50vw;
+  height: inherit;
   border-radius: 1rem;
-  box-shadow: 0 0 5px #ffffff;
-  background-color: #89bbfe;
-  margin: 5rem 0;
+  box-shadow: 0 0 5px $background-color;
+  background-color: $gray-500;
+  // margin: 5rem 0;
 }
 
 .Login-Footer-Link {
@@ -27,7 +30,7 @@
   font-weight: 900;
   font-weight: bold;
   margin: 1rem 1rem;
-  box-shadow: 0 0 3px #121212;
+  box-shadow: 0 0 3px $background-color;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   text-align: center;
@@ -35,7 +38,7 @@
 }
 
 .Login-Footer-Link:hover {
-  color: #121212;
+  color: $background-color;
 }
 
 @media only screen and (max-width: 600px) {

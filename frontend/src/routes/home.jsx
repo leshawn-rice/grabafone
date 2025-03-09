@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { refreshTokenApi } from '../../redux/actionCreators';
+import { refreshTokenApi } from '../redux/actionCreators';
 
-import '../../styles/Home.css';
+import '../styles/routes/home.scss';
 
 const Home = () => {
   const dispatch = useDispatch();

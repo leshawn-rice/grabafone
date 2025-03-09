@@ -10,14 +10,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 // Internal Dependencies
-import { revealPassword } from '../../utils';
-import { registerUserApi, clearErrors } from '../../redux/actionCreators';
+import { revealPassword } from '../tools/utils';
+import { registerUserApi, clearErrors } from '../redux/actionCreators';
 // Components
-import Form from '../form/Form';
+import Form from '../components/form/Form';
 // Styles
-import '../../styles/SignUp.css';
+import '../styles/routes/register.scss';
 
-const SignUp = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
@@ -86,12 +86,12 @@ const SignUp = () => {
   if (user.username) return <Navigate to="/" />
  
   return (
-    <div className="SignUp">
+    <div className="Register">
       <Form
         INITIAL_DATA={INITIAL_DATA}
         handleFormSubmit={handleFormSubmit}
         inputs={inputs}
-        classes="SignUp-Form"
+        classes="Register-Form"
         title="Register"
         button_label="Create Account"
         footer={[]}
@@ -100,4 +100,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;

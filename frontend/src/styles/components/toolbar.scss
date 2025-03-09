@@ -1,0 +1,108 @@
+// toolbar.scss
+
+// @use '../index.scss' as *;
+// @use '../pages/home.scss' as *;
+@use '../base/colors.scss' as *;
+@use '../base/typography.scss' as *;
+
+.toolbar.hidden {
+  display: none !important;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  background-color: $text-color;
+  height: 100vh;
+  width: 10vw;
+
+  // When minimized, reduce width
+  &.minimized {
+    width: 5vw;
+  }
+  transition: width 0.3s ease;
+}
+
+.toolbar .brand {
+  margin-bottom: 2rem;
+}
+
+.toolbar .brand .brand-title {
+  color: $background-color;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.toolbar .brand .toggle-btn {
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:focus {
+    outline: none
+  }
+}
+
+.toolbar .navigation {
+  flex: 1;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0.5rem 0;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        color: $background-color;
+        text-decoration: none;
+        padding: 1rem;
+        transition: background-color 0.3s ease;
+
+        span {
+          margin: 0 1rem;
+        }
+
+        &:hover {
+          background-color: $gray-600;
+          color: $white-000;
+        }
+      }
+    }
+    
+  }
+}
+
+.toolbar .footer {
+  margin-top: auto;
+  padding: 1rem 0;
+}
+
+.toolbar .footer .logout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+.toolbar.minimized {
+  .brand-title,
+  .navigation span,
+  .footer span {
+    opacity: 0;
+  }
+}

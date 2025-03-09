@@ -1,14 +1,102 @@
+// Base
+@use 'base/global' as *;
+@use 'base/reset' as *;
+@use 'base/typography' as *;
+@use 'base/colors' as *;
 
-$darkColor: #121212;
-$lightGrayBlueColor: #cae5ff;
-$lightBlueColor: #acedff; // not used
-$blueColor: #89bbfe;
-$darkGrayBlueColor: #6f8ab7;
+// Layout
+// @import 'layout/header';
+// @import 'layout/footer';
+// @import 'layout/grid';
+// @import 'layout/navigation';
 
-$defaultTextColor: $darkColor;
-$defaultBackgroundColor: $blueColor;
-$defaultNavBackgroundColor: $darkGrayBlueColor;
+// Components
+// @import 'components/buttons';
+// @import 'components/forms';
+// @import 'components/cards';
+// @import 'components/modals';
 
-@mixin theme($theme: $themePrimary) {
-  @if $theme
+// Utils
+// @import 'utils/variables';
+// @import 'utils/mixins';
+// @import 'utils/functions';
+
+:root {
+    font-family: $font-family;
+    line-height: $font-height;
+    font-weight: $font-weight;
+    overflow-x: hidden;
+    color-scheme: light dark;
+    color: $text-color;
+    background-color: $background-color;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+  
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: $background-color;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.layout {
+  height: 100%;
+  width: 100%;
+
 }

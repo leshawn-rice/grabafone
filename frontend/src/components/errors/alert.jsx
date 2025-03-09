@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeError } from '../../redux/actionCreators';
 // Styles
-import '../../styles/Alert.css';
+import '../../styles/components/alert.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCross, faExclamation, faXmark } from '@fortawesome/free-solid-svg-icons';
 

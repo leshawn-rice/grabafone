@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom'; 
-import { generateKeyApi } from '../../redux/actionCreators';
-import '../../styles/GenerateKey.css' 
+import { generateKeyApi } from '../redux/actionCreators';
+import '../styles/GenerateKey.css' 
 
 const GenerateKey = () => {
   const [hasKey, setHasKey] = useState(false);

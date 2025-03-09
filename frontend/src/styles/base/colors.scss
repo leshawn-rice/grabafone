@@ -1,0 +1,27 @@
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+// grey scale colors
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+$white-000: rgba(255, 255, 255, 1);
+$white-100: rgba(255, 255, 255, 0.87);
+
+// bg and text colors
+// $background-color: #242424;
+$background-color: $gray-700;
+$text-color: $white-100;
+
+// semantic colors
+$success-color: #28a745;
+$error-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;

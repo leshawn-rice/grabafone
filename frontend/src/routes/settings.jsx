@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 // Styles
-import '../../styles/Settings.css';
-import SettingsItem from '../settings/SettingsItem';
+import '../styles/Settings.css';
+import SettingsItem from '../components/settings/SettingsItem';
 
 const Settings = () => {
   const [content, setContent] = useState('settings');

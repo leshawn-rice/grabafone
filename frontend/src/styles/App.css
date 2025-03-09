@@ -1,7 +1,0 @@
-.Errors {
-  /* This prevents the rest of the screen from moving */
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  width: inherit;
-}

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors } from '../../redux/actionCreators';
-import Form from '../form/Form';
-import '../../styles/Contact.css'
+import { clearErrors } from '../redux/actionCreators';
+import Form from '../components/form/Form';
+import '../styles/Contact.css'
 
 const Contact = () => {
   const dispatch = useDispatch()

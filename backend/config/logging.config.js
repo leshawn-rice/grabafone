@@ -2,6 +2,7 @@
 
 const winston = require('winston');
 const expressWinston = require('express-winston');
+const { convertTimestamp } = require('../helpers/utils.helper');
 
 const LOG_FILE = '/tmp/grabaphone.log';
 

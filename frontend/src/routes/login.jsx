@@ -5,13 +5,13 @@ import { faEnvelope, faEye, faLock, faEyeSlash } from '@fortawesome/free-solid-s
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 // Internal Dependencies
-import { revealPassword } from '../../utils';
-import { loginUserApi, clearErrors } from '../../redux/actionCreators';
+import { revealPassword } from '../tools/utils';
+import { loginUserApi, clearErrors } from '../redux/actionCreators';
 
 // Components
-import Form from '../form/Form';
+import Form from '../components/form/Form';
 // Styles
-import '../../styles/Login.css';
+import '../styles/routes/login.scss';
 
 const Login = () => {
   const [passwordIcon, setPasswordIcon] = useState(faEyeSlash)
