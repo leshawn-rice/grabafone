@@ -33,11 +33,11 @@ class PhonearenaAPI(object):
         manufacturers = set()
         # O(n)
         for div in divs:
-            devices_link = (
-                self.find_elements_by_class(div, "listing-item-hover").pop().get("href")
-            )
+            devices_div = (self.find_elements_by_tag(div, "a").pop())
+            devices_link = (devices_div.get("href"))
             name = (
-                self.find_elements_by_class(div, "listing-item-hover-alt").pop().string
+                self.find_elements_by_tag(devices_div, "span").pop(
+                    0).text.split("(").pop(0).strip()
             )
             devices_link = devices_link.split(self.BASE_URL)[1]
             # O(1)
@@ -58,10 +58,13 @@ class PhonearenaAPI(object):
             )
             # O(n)
             for device_card in device_cards:
-                link = self.find_elements_by_tag(device_card, "a").pop().get("href")
+                link = self.find_elements_by_tag(
+                    device_card, "a").pop().get("href")
                 link = link.split(self.BASE_URL)[1]
-                name = self.find_elements_by_class(device_card, "title").pop().string
-                device = Device(name=name, link=link, manufacturer=manufacturer)
+                name = self.find_elements_by_class(
+                    device_card, "title").pop().string
+                device = Device(name=name, link=link,
+                                manufacturer=manufacturer)
                 # O(1)
                 devices.add(device)
         return devices
@@ -69,7 +72,8 @@ class PhonearenaAPI(object):
     def parse_device_specs(self, device):
         page_html = self.get(endpoint=device.link)
         specs = {}
-        specs_section = self.find_elements_by_class(page_html, "widgetSpecs").pop()
+        specs_section = self.find_elements_by_class(
+            page_html, "widgetSpecs").pop()
         specs_divs = self.find_elements_by_tag(specs_section, "section")
         for section in specs_divs:
             category = self.find_elements_by_tag(section, "h3").pop().string

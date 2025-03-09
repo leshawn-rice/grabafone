@@ -7,7 +7,8 @@ from models.logger import Logger
 
 class Interface(object):
     def __init__(self):
-        self.log = Logger(filename="seed.log", logName="Interface", logLevel="DEBUG")
+        self.log = Logger(filename="seed.log",
+                          logName="Interface", logLevel="DEBUG")
         self.get_db_uri()
         self.grabaphone = GrabaphoneAPI(DB_URI=self.DB_URI)
         self.phonearena = PhonearenaAPI()
@@ -22,6 +23,7 @@ class Interface(object):
 
     def get_manufacturers(self):
         self.log.debug("Getting Manufacturers from PhoneArena...")
+        manufacturers = []
         try:
             manufacturers = self.phonearena.get_manufacturers()
         except Exception as exc:
